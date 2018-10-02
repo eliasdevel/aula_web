@@ -17,6 +17,7 @@
                     <ul class="dropdown-menu forAnimate" role="menu">
                         <li><a href="?p=States">Estados</a></li>
                         <li><a href="?p=Users">Usuarios</a></li>
+                        <li><a href="?p=Products">Produtos</a></li>
                         <!--<li class="divider"></li>-->
                     </ul>
                 </li>

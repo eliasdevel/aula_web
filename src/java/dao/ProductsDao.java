@@ -47,6 +47,8 @@ public class ProductsDao extends Standart {
             //Setters
             product.setId(rs.getInt("id"));
             product.setName(rs.getString("name"));
+            product.setPrice(rs.getFloat("price"));
+            product.setDescription(rs.getString("description"));
 
             this.products.add(product);
             //turn null, "minha mania"
@@ -69,7 +71,7 @@ public class ProductsDao extends Standart {
             ps.setString(1, product.getDescription());
             ps.setString(2, product.getName());
             ps.setFloat(3, product.getPrice());
-            ps.setFloat(4, product.getCategorie().getId());
+            ps.setInt(4, product.getCategorie().getId());
 
         }
         return ps.execute();
@@ -82,6 +84,8 @@ public class ProductsDao extends Standart {
         Product c = new Product();
         c.setId(rs.getInt("id"));
         c.setName(rs.getString("name"));
+        c.setDescription(rs.getString("description"));
+        c.setPrice(rs.getFloat("price"));
         c.setCategorie(this.categoriesDao.getCategorie(rs.getString("category_id")));
         return c;
     }

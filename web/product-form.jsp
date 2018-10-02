@@ -3,16 +3,16 @@
 <form  action="<c:out value = "${action}"/>" id ="product-form"  method="POST"  >
     <div class="form-group">
         <label for="inputName">Nome</label>
-        <input name ="name" value="<c:out value="${product.getName()}"/>" type="text" class="form-control"  aria-describedby="estadoHelp" placeholder="Nome">
+        <input name ="name" value="<c:out value="${product.getName()}"/>" type="text" class="form-control"  aria-describedby="estadoHelp" placeholder="Nome"/>
 
     </div>
     <div class="form-group">
         <label for="inputSigla">Descrição</label>
-        <input name ="description" value="<c:out value="${product.getDescription()}"/>" type="text" class="form-control"  placeholder="Descrição">
+        <input name ="description" value="<c:out value="${product.getDescription()}"/>" type="text" class="form-control"  placeholder="Descrição"/>
     </div>
     <div class="form-group">
         <label for="inputSigla">Preço</label>
-        <input name ="price" value="<c:out value="${product.getPrice()}"/>" type="number"min="0" max="10000" class="form-control" 
+        <input name ="price" value="<c:out value="${product.getPrice()}"/>" type="number"min="0" max="10000" class="form-control" />
     </div>
 
 

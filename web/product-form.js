@@ -28,16 +28,5 @@ $(document).ready(function () {
             };
         }
     });
-    $("#product-form").submit(function () {
-        var file = document.getElementById('image-1').files[0];
-        if (file) {
-            // create reader
-            var reader = new FileReader();
-            reader.readAsBinaryString(file);
-            reader.onload = function (e) {
-                // browser completed reading file - display it
-                alert(btoa(e.target.result));
-            };
-        }
-    });
+    
 });

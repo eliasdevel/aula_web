@@ -30,7 +30,7 @@ public class ProductSave implements Logic {
         CategorieDao catDao = new CategorieDao(new ArrayList<Categorie>());
 
         Product product = new Product();
-        System.out.println("Parametro de categoria: "+ req.getParameter("price"));
+        System.out.println("Parametro de categoria: " + req.getParameter("price"));
         if (req.getParameter("category") != null) {
             System.out.println("Entrou na jabiraca");
             product.setCategorie(catDao.getCategorie(req.getParameter("category")));
@@ -42,26 +42,41 @@ public class ProductSave implements Logic {
         if (req.getParameter("name") != null) {
             product.setName(req.getParameter("name"));
         }
-
         if (req.getParameter("description") != null) {
-            product.setName(req.getParameter("name"));
+            product.setDescription(req.getParameter("description"));
         }
+        if (req.getParameter("price") != null) {
+            product.setPrice(Float.parseFloat(req.getParameter("price")));
+        } 
+        String[] images = req.getParameterValues("images-hd[]");
+       
 
-        if (req.getParameter("ac") != null) {
+        
+        
+
+   
+
+    if (req.getParameter ( 
+        "ac") != null) {
             if (req.getParameter("ac").equals("delete")) {
-                dao.delete("users", req.getParameter("id"));
-            }
-        } else {
-            if (dao.saveProduct(product)) {
-                req.setAttribute("type-msg", "sucess");
-                req.setAttribute("msg", "Salvo com sucesso");
-            } else {
-                req.setAttribute("type-msg", "error");
-                req.setAttribute("msg", "Erro ao salvar");
-            }
+            dao.delete("products", req.getParameter("id"));
         }
+    }
 
-        req.setAttribute("url", "?p=Products");
-        return "reload.jsp";
+    
+        else {
+            if (dao.saveProduct(product)) {
+            req.setAttribute("type-msg", "sucess");
+            req.setAttribute("msg", "Salvo com sucesso");
+        } else {
+            req.setAttribute("type-msg", "error");
+            req.setAttribute("msg", "Erro ao salvar");
+        }
+    }
+
+    req.setAttribute (
+    "url", "?p=Products");
+
+return "reload.jsp";
     }
 }
