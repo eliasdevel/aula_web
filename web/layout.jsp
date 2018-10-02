@@ -20,5 +20,8 @@
         <div class= "main" style="height:100%">
             <c:import  url = "${content}"/>
         </div>
+        
+        
     </body>
+    
 </html>
