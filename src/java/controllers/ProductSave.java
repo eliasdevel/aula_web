@@ -3,20 +3,12 @@ package controllers;
 import dao.CategorieDao;
 import dao.ImagesDao;
 import dao.ProductsDao;
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.StringWriter;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.Categorie;
 import models.Image;
 import models.Product;
-import org.apache.tomcat.util.buf.Utf8Encoder;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
