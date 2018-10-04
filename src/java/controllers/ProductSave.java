@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.Categorie;
-import models.HtmlEscape;
 import models.Image;
 import models.Product;
 import org.apache.tomcat.util.buf.Utf8Encoder;
