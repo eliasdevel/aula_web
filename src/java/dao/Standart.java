@@ -74,4 +74,11 @@ public class Standart {
         return ps.execute();
     }
 
+    public int currentInteget(String table) throws SQLException {
+        ResultSet rs;
+        rs = this.con.createStatement().executeQuery("SELECT currval('" + table + "_id_sequence');");
+        rs.next();
+        return rs.getInt(1) + 1;
+    }
+
 }

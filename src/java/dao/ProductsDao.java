@@ -89,5 +89,7 @@ public class ProductsDao extends Standart {
         c.setCategorie(this.categoriesDao.getCategorie(rs.getString("category_id")));
         return c;
     }
+    
+    
 
 }

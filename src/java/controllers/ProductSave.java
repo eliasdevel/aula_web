@@ -4,6 +4,7 @@ import dao.CitysDao;
 import dao.UsersDao;
 import dao.AddressDao;
 import dao.CategorieDao;
+import dao.ImagesDao;
 import dao.ProductsDao;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import models.Address;
 import models.Categorie;
 import models.City;
+import models.Image;
 import models.Product;
 import models.State;
 import models.User;
@@ -27,6 +29,8 @@ public class ProductSave implements Logic {
             throws Exception {
         System.out.println(req.getParameter("ac"));
         ProductsDao dao = new ProductsDao(new ArrayList<Product>());
+        ImagesDao imgsDao = new ImagesDao(new ArrayList<Image>());
+
         CategorieDao catDao = new CategorieDao(new ArrayList<Categorie>());
 
         Product product = new Product();
@@ -47,36 +51,41 @@ public class ProductSave implements Logic {
         }
         if (req.getParameter("price") != null) {
             product.setPrice(Float.parseFloat(req.getParameter("price")));
-        } 
+        }
         String[] images = req.getParameterValues("images-hd[]");
-       
 
-        
-        
-
-   
-
-    if (req.getParameter ( 
-        "ac") != null) {
+        if (req.getParameter("ac") != null) {
             if (req.getParameter("ac").equals("delete")) {
-            dao.delete("products", req.getParameter("id"));
-        }
-    }
-
-    
-        else {
-            if (dao.saveProduct(product)) {
-            req.setAttribute("type-msg", "sucess");
-            req.setAttribute("msg", "Salvo com sucesso");
+                dao.delete("products", req.getParameter("id"));
+            }
         } else {
-            req.setAttribute("type-msg", "error");
-            req.setAttribute("msg", "Erro ao salvar");
+            if (dao.saveProduct(product)) {
+                
+                if (req.getParameter("id") == null) {
+                    product.setId(dao.currentInteget("products"));
+                }
+
+                req.setAttribute("type-msg", "sucess");
+                req.setAttribute("msg", "Salvo com sucesso");
+              
+                for (int i = 0; i < images.length; i++) {
+                    System.out.println("img:"+ images[i]);
+                    Image img = new Image();
+                    img.setBase64Data(images[i]);
+                    img.setProduct(product);
+                    img.setName("img");
+                    img.setLabel("img1");
+                    imgsDao.saveImage(img);
+                }
+
+            } else {
+                req.setAttribute("type-msg", "error");
+                req.setAttribute("msg", "Erro ao salvar");
+            }
         }
-    }
 
-    req.setAttribute (
-    "url", "?p=Products");
+        req.setAttribute("url", "?p=Products");
 
-return "reload.jsp";
+        return "reload.jsp";
     }
 }
