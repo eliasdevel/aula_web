@@ -127,6 +127,7 @@ CREATE TABLE  "images" (
   "id" INT NOT NULL,
   "name" VARCHAR(45) NULL,
   "label" VARCHAR(200) NULL,
+  "base64data" text NULL,
   "product_id" INT NOT NULL,
   PRIMARY KEY ("id"),
   CONSTRAINT "fk_images_products1"
@@ -215,3 +216,18 @@ ALTER TABLE "orders" ALTER COLUMN "id" SET DEFAULT NEXTVAL('"orders_id_sequence"
 DROP SEQUENCE IF EXISTS "movimentations_id_sequence";
 CREATE SEQUENCE  "movimentations_id_sequence";
 ALTER TABLE "movimentations" ALTER COLUMN "id" SET DEFAULT NEXTVAL('"movimentations_id_sequence"');
+DROP SEQUENCE IF EXISTS "users_id_sequence";
+CREATE SEQUENCE  "users_id_sequence";
+ALTER TABLE "users" ALTER COLUMN "id" SET DEFAULT NEXTVAL('"products_id_sequence"');
+DROP SEQUENCE IF EXISTS "products_id_sequence";
+CREATE SEQUENCE  "products_id_sequence";
+ALTER TABLE "products" ALTER COLUMN "id" SET DEFAULT NEXTVAL('"products_id_sequence"');
+DROP SEQUENCE IF EXISTS "images_id_sequence";
+CREATE SEQUENCE  "images_id_sequence";
+ALTER TABLE "images" ALTER COLUMN "id" SET DEFAULT NEXTVAL('"images_id_sequence"');
+DROP SEQUENCE IF EXISTS "addresses_id_sequence";
+CREATE SEQUENCE  "addresses_id_sequence";
+ALTER TABLE "addresses" ALTER COLUMN "id" SET DEFAULT NEXTVAL('"addresses_id_sequence"');
+CREATE SEQUENCE  "citys_id_sequence";
+ALTER TABLE "citys" ALTER COLUMN "id" SET DEFAULT NEXTVAL('"citys_id_sequence"');
+
