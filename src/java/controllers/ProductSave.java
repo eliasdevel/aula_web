@@ -52,24 +52,25 @@ public class ProductSave implements Logic {
         if (req.getParameter("price") != null) {
             product.setPrice(Float.parseFloat(req.getParameter("price")));
         }
-        String[] images = req.getParameterValues("images-hd[]");
 
+//        for (int i = 0; i < images.length; i++) {
+//            System.out.println("img:" + images[i]);
+//
+//        }
         if (req.getParameter("ac") != null) {
             if (req.getParameter("ac").equals("delete")) {
+                 imgsDao.delete(dao.getProduct(Integer.parseInt(req.getParameter("id"))));
                 dao.delete("products", req.getParameter("id"));
             }
         } else {
             if (dao.saveProduct(product)) {
-                
                 if (req.getParameter("id") == null) {
-                    product.setId(dao.currentInteget("products"));
+                    product.setId(dao.currentInteger("products"));
                 }
-
-                req.setAttribute("type-msg", "sucess");
-                req.setAttribute("msg", "Salvo com sucesso");
-              
+                String[] images = req.getParameterValues("images-hd[]");
+                imgsDao.delete(product);
                 for (int i = 0; i < images.length; i++) {
-                    System.out.println("img:"+ images[i]);
+                    System.out.println("img:" + images[i]);
                     Image img = new Image();
                     img.setBase64Data(images[i]);
                     img.setProduct(product);
@@ -77,15 +78,14 @@ public class ProductSave implements Logic {
                     img.setLabel("img1");
                     imgsDao.saveImage(img);
                 }
-
+                req.setAttribute("type-msg", "sucess");
+                req.setAttribute("msg", "Salvo com sucesso");
             } else {
                 req.setAttribute("type-msg", "error");
                 req.setAttribute("msg", "Erro ao salvar");
             }
         }
-
         req.setAttribute("url", "?p=Products");
-
         return "reload.jsp";
     }
 }

@@ -74,7 +74,7 @@ public class ProductsDao extends Standart {
             ps.setInt(4, product.getCategorie().getId());
 
         }
-        return ps.execute();
+        return !ps.execute();
     }
 
     public Product getProduct(int id) throws SQLException {

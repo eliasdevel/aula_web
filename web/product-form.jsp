@@ -20,14 +20,14 @@
         <label for="exampleFormControlSelect1">Categoria</label>
         <select  class="form-control" name="category"  id="exampleFormControlSelect1"  />
         <option value="0">Selecione</option>
-            <c:if test="${product != null}">
-                <option value="${product.getCategorie().getId()}" selected>${product.getCategorie().getName()}</option>
+        <c:if test="${product != null}">
+            <option value="${product.getCategorie().getId()}" selected>${product.getCategorie().getName()}</option>
+        </c:if>
+        <c:forEach items="${categories}" var="categorie">
+            <c:if test="${product.getCategorie().getId() != categorie.getId()}">
+                <option value="${categorie.getId()}">${categorie.getName()}</option>
             </c:if>
-            <c:forEach items="${categories}" var="categorie">
-                <c:if test="${product.getCategorie().getId() != categorie.getId()}">
-                    <option value="${categorie.getId()}">${categorie.getName()}</option>
-                </c:if>
-            </c:forEach>
+        </c:forEach>
         </select>
     </div>
 
@@ -37,6 +37,10 @@
         <label for="inputSigla" class="">Imagens</label>
         <input class="images" id="image-1"  type="file" class="form-control"  placeholder="Adicionar Imagem">
         <br/>
+        <c:forEach items="${images}" var="image">
+            <img width='80px' style ='margin-right:10px' src ='data:image/png;base64, <c:out value="${image.getBase64Data()}"/>'>
+            <input name ='images-hd[]' type='hidden' value = '<c:out value="${image.getBase64Data()}"/>'>
+        </c:forEach>
     </div>
 
     <button type="submit" class="btn btn-primary">Salvar</button>

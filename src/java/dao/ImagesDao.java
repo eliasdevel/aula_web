@@ -31,7 +31,7 @@ public class ImagesDao extends Standart {
     public List<Image> getImages(Product prod) throws SQLException {
         String query = "SELECT * FROM images ";
         if (prod != null) {
-            query += " product_id  = ? ";
+            query += " where product_id  = ? ";
         }
 
         PreparedStatement ps = this.con.prepareStatement(query + ";");
@@ -66,23 +66,27 @@ public class ImagesDao extends Standart {
             ps.setString(4, image.getBase64Data());
             ps.setInt(5, image.getId());
         } else {
-            ps = this.con.prepareStatement("insert into images (name,label,base64data) values(?,?,?,select curval());");
+            ps = this.con.prepareStatement("insert into images (name,label,base64data,product_id) values(?,?,?,?);");
             ps.setString(1, image.getName());
             ps.setString(2, image.getLabel());
             ps.setString(3, image.getBase64Data());
+            System.out.println("Teste11111111111111111...........");
+            ps.setInt(4, image.getProduct().getId());
 
         }
         return ps.execute();
     }
 
-    public boolean delete(Image image) throws SQLException {
-        PreparedStatement ps = this.con.prepareStatement("DELETE FROM images where id = ?;");
-        ps.setInt(1, image.getId());
+    public boolean delete(Product pro) throws SQLException {
+        PreparedStatement ps = this.con.prepareStatement("DELETE FROM images where product_id = ?;");
+        ps.setInt(1, pro.getId());
         return ps.execute();
     }
 
-    public Image getImage(String id) throws SQLException {
-        ResultSet rs = this.getById("images", id);
+    public Image getImage(String base64) throws SQLException {
+        PreparedStatement ps = this.con.prepareStatement("Select * from  images where base64data = ?;");
+        ps.setString(1, base64);
+        ResultSet rs = ps.executeQuery();
         rs.next();
         Image c = new Image();
         c.setId(rs.getInt("id"));
