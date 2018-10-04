@@ -1,21 +1,23 @@
 package controllers;
 
-import dao.CitysDao;
-import dao.UsersDao;
-import dao.AddressDao;
 import dao.CategorieDao;
 import dao.ImagesDao;
 import dao.ProductsDao;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import models.Address;
 import models.Categorie;
-import models.City;
+import models.HtmlEscape;
 import models.Image;
 import models.Product;
-import models.State;
-import models.User;
+import org.apache.tomcat.util.buf.Utf8Encoder;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -47,7 +49,10 @@ public class ProductSave implements Logic {
             product.setName(req.getParameter("name"));
         }
         if (req.getParameter("description") != null) {
-            product.setDescription(req.getParameter("description"));
+        
+            
+
+            product.setDescription( req.getParameter("description"));
         }
         if (req.getParameter("price") != null) {
             product.setPrice(Float.parseFloat(req.getParameter("price")));
@@ -59,7 +64,7 @@ public class ProductSave implements Logic {
 //        }
         if (req.getParameter("ac") != null) {
             if (req.getParameter("ac").equals("delete")) {
-                 imgsDao.delete(dao.getProduct(Integer.parseInt(req.getParameter("id"))));
+                imgsDao.delete(dao.getProduct(Integer.parseInt(req.getParameter("id"))));
                 dao.delete("products", req.getParameter("id"));
             }
         } else {
@@ -69,14 +74,16 @@ public class ProductSave implements Logic {
                 }
                 String[] images = req.getParameterValues("images-hd[]");
                 imgsDao.delete(product);
-                for (int i = 0; i < images.length; i++) {
-                    System.out.println("img:" + images[i]);
-                    Image img = new Image();
-                    img.setBase64Data(images[i]);
-                    img.setProduct(product);
-                    img.setName("img");
-                    img.setLabel("img1");
-                    imgsDao.saveImage(img);
+                if (images != null) {
+                    for (int i = 0; i < images.length; i++) {
+                        System.out.println("img:" + images[i]);
+                        Image img = new Image();
+                        img.setBase64Data(images[i]);
+                        img.setProduct(product);
+                        img.setName("img");
+                        img.setLabel("img1");
+                        imgsDao.saveImage(img);
+                    }
                 }
                 req.setAttribute("type-msg", "sucess");
                 req.setAttribute("msg", "Salvo com sucesso");

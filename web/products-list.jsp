@@ -1,13 +1,13 @@
-<%@page pageEncoding="UTF-8" contentType="text/html" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>       
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <c:import  url = "tool-bar.jsp"/>
 <table class="table table-dark" >
     <thead>
         <tr>
-            <th scope="col"> OpÃ§Ãµes </th>
+            <th scope="col"> Opções </th>
             <th scope="col">ID</th>
             <th scope="col">Nome</th>
-            <th scope="col">DescriÃ§Ã£o</th>
+            <th scope="col">Descrição</th>
         </tr>
     </thead>
     <tbody>   
@@ -15,18 +15,18 @@
             <tr>
                 <td> 
                     <a style="font-size:  20px" href="?p=ProductForm&id=<c:out value = "${product.getId()}"/>" class="glyphicon-pencil"></a>
-                    <a style="font-size:  20px" onclick="return confirm('VocÃª tem certeza que deseja excluir o registro?')" href="?p=ProductSave&ac=delete&id=<c:out value = "${product.getId()}"/>" class="glyphicon-minus"></a>
+                    <a style="font-size:  20px" onclick="return confirm('Você tem certeza que deseja excluir o registro?')" href="?p=ProductSave&ac=delete&id=<c:out value = "${product.getId()}"/>" class="glyphicon-minus"></a>
                 </td>
 
 
                 <td scope="col"> 
-                    <c:out value = "${product.getId()}"/><p>
+                    <c:out value = "${product.getId()}"/>
                 </td>
                 <td scope="col"> 
-                    <c:out value = "${product.getName()}"/><p>
+                   <c:out value = "${product.getName()}"/>
                 </td>
                 <td scope="col"> 
-                    <c:out value = "${product.getDescription()}"/><p>
+                     <c:out value = "${product.getDescription()}"/>
                 </td>
 
             </tr>

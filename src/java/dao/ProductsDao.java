@@ -20,6 +20,7 @@ public class ProductsDao extends Standart {
 
     private List<Product> products;
     private CategorieDao categoriesDao;
+
     public ProductsDao(List<Product> products) {
         this.con = con;
         this.products = products;
@@ -35,7 +36,7 @@ public class ProductsDao extends Standart {
         if (productQ != null) {
             query += "name ilike %'?'%";
         }
-
+        query += " ORDER BY id";
         PreparedStatement ps = this.con.prepareStatement(query + ";");
 
         if (productQ != null) {
@@ -89,7 +90,5 @@ public class ProductsDao extends Standart {
         c.setCategorie(this.categoriesDao.getCategorie(rs.getString("category_id")));
         return c;
     }
-    
-    
 
 }

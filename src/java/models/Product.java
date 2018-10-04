@@ -45,9 +45,8 @@ public class Product extends Standart {
     }
 
     public void setName(String name) {
+
         this.name = name;
     }
-
-    
 
 }

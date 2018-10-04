@@ -23,10 +23,15 @@ $(document).ready(function () {
             reader.readAsBinaryString(file);
             reader.onload = function (e) {
                 // browser completed reading file - display it
-                $("#images-inputs").append("<img width='80px' style ='margin-right:10px' src ='data:image/png;base64, " + btoa(e.target.result) + "'> ");
-                $("#images-inputs").append('<input name ="images-hd[]" type="hidden" value = "' + btoa(e.target.result) + '">')
+                $("#images-inputs").append("<img  class ='img-to-remove' onclick='$(this).remove();$(this).next().remove();' width='80px' style ='margin-right:10px' src ='data:image/png;base64, " + btoa(e.target.result) + "'> ");
+                $("#images-inputs").append('<input class ="img-to-remove" name ="images-hd[]" type="hidden" value = "' + btoa(e.target.result) + '">');
             };
         }
+    });
+    
+    $(".image-content").click(function (){
+       $(this).remove();
+        
     });
     
 });
