@@ -2,6 +2,6 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <div class="center-block">
     <p class="text-center">
-        <b>Bem vindo ao sistema Administrativo iTrago</b>
+        <b>Bem vindo ao Site iTrago</b>
     </p>
 </div>
