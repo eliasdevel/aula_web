@@ -4,10 +4,8 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.util.List;
-import models.State;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import models.Categorie;
 import models.Product;
@@ -34,13 +32,13 @@ public class ProductsDao extends Standart {
     public List<Product> getProducts(Product productQ) throws SQLException {
         String query = "SELECT * FROM products ";
         if (productQ != null) {
-            query += "name ilike %'?'%";
+            query += "where name like ?";
         }
         query += " ORDER BY id";
         PreparedStatement ps = this.con.prepareStatement(query + ";");
 
         if (productQ != null) {
-            ps.setString(1, productQ.getName());
+            ps.setString(1,"%"+ productQ.getName()+"%");
         }
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
@@ -62,18 +60,18 @@ public class ProductsDao extends Standart {
         PreparedStatement ps = null;
         ResultSet rs = this.getById("products", product.getId() + "");
         if (rs.next()) {
-            ps = this.con.prepareStatement("UPDATE products set name  = ? , description = ?, price = ?  where id = ?;");
+            ps = this.con.prepareStatement("UPDATE products set name  = ? , description = ?, price = ? ,category_id =?  where id = ?;");
             ps.setString(1, product.getName());
             ps.setString(2, product.getDescription());
             ps.setFloat(3, product.getPrice());
-            ps.setInt(4, product.getId());
+            ps.setInt(4, product.getCategorie().getId());
+            ps.setInt(5, product.getId());
         } else {
-            ps = this.con.prepareStatement("insert into products (description,name,price,category_id) values(?,?,?,?);");
+            ps = this.con.prepareStatement("INSERT INTO products (description,name,price,category_id) values(?,?,?,?);");
             ps.setString(1, product.getDescription());
             ps.setString(2, product.getName());
             ps.setFloat(3, product.getPrice());
             ps.setInt(4, product.getCategorie().getId());
-
         }
         return !ps.execute();
     }

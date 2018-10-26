@@ -18,7 +18,7 @@
                         <li><a href="?p=States">Estados</a></li>
                         <li><a href="?p=Users">Usuarios</a></li>
                         <li><a href="?p=Products">Produtos</a></li>
-                        <!--<li class="divider"></li>-->
+                        <li><a href="?p=Categories">Categorias</a></li>
                     </ul>
                 </li>
             </ul>
