@@ -1,10 +1,9 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
-
 <html lang="pt" >
     <head>
         <link rel="shortcut icon" href="assets/favicon.ico" />
-         <meta charset="UTF-8"> 
+        <meta charset="UTF-8"> 
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title><c:out value = "Itrago- ${title}"/></title>
@@ -19,8 +18,6 @@
         <div class= "main" style="height:100%">
             <c:import  url = "${content}"/>
         </div>
-        
-        
+        <script type="text/javascript" src='shortcuts.js' > </script>
     </body>
-    
 </html>
