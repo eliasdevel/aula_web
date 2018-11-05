@@ -28,7 +28,7 @@ public class main extends HttpServlet {
     protected void service(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-      
+
         HttpSession session = request.getSession();
 
         String parametro = request.getParameter("p");
@@ -43,6 +43,8 @@ public class main extends HttpServlet {
         }
         if ((usuario == null || senha == null) || !logged) {
             parametro = "Login";
+        } else if (parametro == null) {
+            parametro = "Home";
         } else if (parametro.equals("Login")) {
             parametro = "Home";
         }
