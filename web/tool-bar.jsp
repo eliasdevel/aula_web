@@ -10,15 +10,16 @@
                     <div class="dropdown dropdown-lg">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
                         <div class="dropdown-menu dropdown-menu-right" role="menu">
-                            <form class="form-horizontal" role="form">
+                            <form class="form-horizontal" accept-charset="UTF-8" role="form" >
                                 <input type='hidden' name ='p' value="<c:out value = "${page}"/>"/>
                                 <c:forEach items="${searchColumns}" var="search">
                                     <div class="form-group">
                                         <label for="contain"><c:out value="${search.value}"/></label>
-                                        <input class="form-control" name = "<c:out value="${search.key}"/>"  value = '<c:out value="${searchValues.get(search.key)}"/>' type="text" />
+                                        <input  class="form-control input-clearable" name = "<c:out value="${search.key}"/>"  value = '<c:out value="${searchValues.get(search.key)}"/>' type="text" />
                                     </div>
                                 </c:forEach>
                                 <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                <button type="submit" onclick='$(".input-clearable").val("");' class="btn btn-primary"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
                             </form>
                         </div>
                     </div>

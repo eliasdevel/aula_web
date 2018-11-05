@@ -31,16 +31,16 @@ public class UsersDao extends Standart {
      * @return List of states
      * @throws SQLException
      */
-    public List<User> getUsers(State stateQ) throws SQLException {
+    public List<User> getUsers(User search) throws SQLException {
         String query = "SELECT * FROM users ";
-        if (stateQ != null) {
-            query += "name ilike %'?'%";
+        if (search != null) {
+            query += " where name like ?";
         }
 
         PreparedStatement ps = this.con.prepareStatement(query + ";");
 
-        if (stateQ != null) {
-            ps.setString(1, stateQ.getName());
+        if (search != null) {
+            ps.setString(1, "%"+search.getName()+"%");
         }
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
