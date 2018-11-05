@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import models.Categorie;
+import models.Image;
 import models.Product;
 
 /**
@@ -48,7 +49,7 @@ public class ProductsDao extends Standart {
             product.setName(rs.getString("name"));
             product.setPrice(rs.getFloat("price"));
             product.setDescription(rs.getString("description"));
-
+            product.setImages(new ImagesDao(new ArrayList<Image>()).getImages(product));
             this.products.add(product);
             //turn null, "minha mania"
             product = null;

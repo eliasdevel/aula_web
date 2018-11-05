@@ -5,6 +5,8 @@
  */
 package models;
 
+import java.util.List;
+
 /**
  *
  * @author elias
@@ -15,6 +17,15 @@ public class Product extends Standart {
     private String description;
     private Categorie categorie;
     private float price;
+    private List<Image> images;
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
 
     public float getPrice() {
         return price;
@@ -48,5 +59,7 @@ public class Product extends Standart {
 
         this.name = name;
     }
+    
+    
 
 }
