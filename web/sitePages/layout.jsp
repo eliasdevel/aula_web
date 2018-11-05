@@ -7,10 +7,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title><c:out value = "Itrago- ${title}"/></title>
-        <link href="itrago/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="itrago/sitePages/assets/main.css" rel="stylesheet">
-        <script src="itrago/jquery/jquery.js"></script>
-        <script src="itrago/bootstrap/dist/js/bootstrap.min.js"></script>
+        <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="sitePages/assets/main.css" rel="stylesheet">
+        <script src="jquery/jquery.js"></script>
+        <script src="bootstrap/dist/js/bootstrap.min.js"></script>
     </head>
     <body>
         <c:import  url = "header.jsp"/>
