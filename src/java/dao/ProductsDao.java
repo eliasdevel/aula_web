@@ -39,7 +39,7 @@ public class ProductsDao extends Standart {
         PreparedStatement ps = this.con.prepareStatement(query + ";");
 
         if (productQ != null) {
-            ps.setString(1,"%"+ productQ.getName()+"%");
+            ps.setString(1, "%" + productQ.getName() + "%");
         }
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
@@ -79,7 +79,9 @@ public class ProductsDao extends Standart {
 
     public Product getProduct(int id) throws SQLException {
         this.categoriesDao = new CategorieDao(new ArrayList<Categorie>());
-        ResultSet rs = this.getById("products", id + "");
+        PreparedStatement ps = this.con.prepareStatement("Select * from  products where id = ?;");
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
         rs.next();
         Product c = new Product();
         c.setId(rs.getInt("id"));
@@ -87,6 +89,8 @@ public class ProductsDao extends Standart {
         c.setDescription(rs.getString("description"));
         c.setPrice(rs.getFloat("price"));
         c.setCategorie(this.categoriesDao.getCategorie(rs.getString("category_id")));
+        c.setImages(new ImagesDao(new ArrayList<Image>()).getImages(c));
+
         return c;
     }
 
