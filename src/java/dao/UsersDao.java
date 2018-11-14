@@ -4,13 +4,11 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.util.List;
-import models.State;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import models.Address;
 import models.User;
+import models.Address;
 
 /**
  *
@@ -34,13 +32,11 @@ public class UsersDao extends Standart {
     public List<User> getUsers(User search) throws SQLException {
         String query = "SELECT * FROM users ";
         if (search != null) {
-            query += " where name like ?";
+            query += " where name ilike ?";
         }
-
         PreparedStatement ps = this.con.prepareStatement(query + ";");
-
         if (search != null) {
-            ps.setString(1, "%"+search.getName()+"%");
+            ps.setString(1, "%" + search.getName() + "%");
         }
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
@@ -91,5 +87,4 @@ public class UsersDao extends Standart {
         u.setName(rs.getString("name"));
         return u;
     }
-
 }

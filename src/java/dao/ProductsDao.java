@@ -33,7 +33,7 @@ public class ProductsDao extends Standart {
     public List<Product> getProducts(Product productQ) throws SQLException {
         String query = "SELECT * FROM products ";
         if (productQ != null) {
-            query += "where name like ?";
+            query += "where name ilike ?";
         }
         query += " ORDER BY id";
         PreparedStatement ps = this.con.prepareStatement(query + ";");
