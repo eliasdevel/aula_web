@@ -32,7 +32,7 @@
                         <div class="cart-items">
                             <ol class="items">
                                 <li>
-                                    <a href="#" class="product-image"> <img src="https://lh3.googleusercontent.com/-uwagl9sPHag/WM7WQa00ynI/AAAAAAAADtA/hio87ZnTpakcchDXNrKc_wlkHEcpH6vMwCJoC/w140-h148-p-rw/profile-pic.jpg" class="img-responsive" alt="Sample Product "> </a>
+                                    <a href="#" class="product-image">   </a>
                                     <div class="product-details">
                                         <div class="close-icon"> <a href="#"><i class="fa fa-close"></i></a> </div>
                                         <p class="product-name"> <a href="#">Sumi9xm@gmail.com</a> </p> <strong>1</strong> x <span class="price text-primary">$59.99</span> </div>
@@ -163,7 +163,7 @@
                             <ul class="list-unstyled">
                                 <li>Sumit Kumar</li>
                             </ul>
-                            <img src="https://lh3.googleusercontent.com/-uwagl9sPHag/WM7WQa00ynI/AAAAAAAADtA/hio87ZnTpakcchDXNrKc_wlkHEcpH6vMwCJoC/w140-h148-p-rw/profile-pic.jpg" class="img-responsive" alt="menu-img">
+                           
                         </li>
                     </ul>
                 </li>
