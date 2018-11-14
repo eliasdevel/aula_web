@@ -21,6 +21,7 @@
                         <li><a href="?p=Categories">Categorias</a></li>
                     </ul>
                 </li>
+                <li class="active"><a href="admin?p=Home">Sair<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-remove"></span></a></li>
             </ul>
         </div>
     </div>
