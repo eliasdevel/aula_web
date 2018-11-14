@@ -14,7 +14,7 @@
             <tr>
                 <td> 
                     <a style="font-size:  20px" href="?p=CityForm&id=<c:out value = "${city.getId()}"/>" class="glyphicon-pencil"></a>
-                    <a style="font-size:  20px" href="?p=CitySave&ac=delete&id=<c:out value = "${city.getId()}"/>" class="glyphicon-minus"></a>
+                    <a style="font-size:  20px" onclick="return confirm('Você tem certeza que deseja excluir o registro?')" href="?p=CitySave&ac=delete&id=<c:out value = "${city.getId()}"/>" class="glyphicon-minus"></a>
                 </td>
 
 
