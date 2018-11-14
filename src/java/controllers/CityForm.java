@@ -17,17 +17,17 @@ import models.State;
  * and open the template in the editor.
  */
 public class CityForm implements Logic {
-    
+
     public String executa(HttpServletRequest req,
             HttpServletResponse res)
             throws Exception {
         System.out.println(req.getParameter("ac"));
         StatesDao stDao = new StatesDao(new ArrayList<State>());
         req.setAttribute("states", stDao.getStates(null));
-        
+
         CitysDao dao = new CitysDao(new ArrayList<City>());
         String action = "admin?p=CitySave";
-        req.setAttribute("action", action);
+
         req.setAttribute("content", "city-form.jsp");
         req.setAttribute("title", "Cidades");
         if (req.getParameter("id") != null) {
@@ -37,7 +37,8 @@ public class CityForm implements Logic {
             action += "&id=" + req.getParameter("id");
             req.setAttribute("city", city);
         }
-        
+        req.setAttribute("action", action);
+
         System.out.println("Executando a logica e redirecionando...");
         return "layout.jsp";
     }
