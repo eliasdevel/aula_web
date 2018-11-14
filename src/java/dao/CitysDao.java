@@ -19,6 +19,7 @@ public class CitysDao extends Standart {
 
     private List<City> citys;
     private StatesDao statesDao;
+
     public CitysDao(List<City> citys) {
         this.con = con;
         this.citys = citys;
@@ -58,13 +59,14 @@ public class CitysDao extends Standart {
         PreparedStatement ps = null;
         ResultSet rs = this.getById("citys", city.getId() + "");
         if (rs.next()) {
-            ps = this.con.prepareStatement("UPDATE citys  name  = ? where id = ?;");
+            ps = this.con.prepareStatement("UPDATE citys set name  = ? ,state_id = ? where id = ?;");
             ps.setString(1, city.getName());
-            ps.setInt(2, city.getId());
+            ps.setString(2, city.getState().getId());
+            ps.setInt(3, city.getId());
         } else {
-            ps = this.con.prepareStatement("insert into citys values(?,?);");
-            ps.setInt(1, city.getId());
-            ps.setString(2, city.getName());
+            ps = this.con.prepareStatement("insert into citys (name,state_id) values(?,?);");
+            ps.setString(1, city.getName());
+            ps.setString(2, city.getState().getId());
 
         }
         return ps.execute();
