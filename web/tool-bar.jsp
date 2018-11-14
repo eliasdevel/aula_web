@@ -9,7 +9,7 @@
                 <div class="btn-group" role="group" style="float: right">
                     <div class="dropdown dropdown-lg ">
                         <button title="Pesquisa"type="button" class="btn btn-default glyphicon glyphicon-search" data-toggle="dropdown" aria-expanded="false"></button>
-                        <div class="dropdown-menu dropdown-menu-right" role="menu">
+                        <div class="dwopdown dropdown-menu dropdown-menu-right" role="menu">
                             <form class="form-horizontal" accept-charset="UTF-8" role="form" >
                                 <input type='hidden' name ='p' value="<c:out value = "${page}"/>"/>
                                 <c:forEach items="${searchColumns}" var="search">
