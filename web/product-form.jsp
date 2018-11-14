@@ -12,7 +12,7 @@
     </div>
     <div class="form-group">
         <label for="inputSigla">Preço</label>
-        <input name ="price" value="<c:out value="${product.getPrice()}"/>" type="number"min="0" max="10000" class="form-control" required/>
+        <input name ="price"step=0.01 value="<c:out value="${product.getPrice()}"/>" type="number"min="0" max="10000" class="form-control" required/>
     </div>
     <div class="form-group">
         <label for="exampleFormControlSelect1">Categoria</label>
