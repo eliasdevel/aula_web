@@ -2,13 +2,13 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <div class="trago-toolbar" style="margin-left: 0px" class="row" >
     <div class="col-md-12">
-        <a class="glyphicon-plus" href="?p=<c:out value = "${savePage}"/>"> </a>
+        <a class="glyphicon glyphicon-plus" title="Novo Cadastro" href="?p=<c:out value = "${savePage}"/>"> </a>
         <div class="input-group" id="adv-search" style="float:right;margin-left:100px;">
-            <input type="text" class="form-control" placeholder="Pesquisa" />
-            <div class="input-group-btn">
-                <div class="btn-group" role="group">
-                    <div class="dropdown dropdown-lg">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+         
+            <div class="input-group-btn ">
+                <div class="btn-group" role="group" style="float: right">
+                    <div class="dropdown dropdown-lg ">
+                        <button title="Pesquisa"type="button" class="btn btn-default glyphicon glyphicon-search" data-toggle="dropdown" aria-expanded="false"></button>
                         <div class="dropdown-menu dropdown-menu-right" role="menu">
                             <form class="form-horizontal" accept-charset="UTF-8" role="form" >
                                 <input type='hidden' name ='p' value="<c:out value = "${page}"/>"/>
