@@ -1,20 +1,14 @@
 package controllers;
 
-import dao.CitysDao;
-import dao.StatesDao;
 import dao.ProductsDao;
 import dao.CategorieDao;
 import dao.ImagesDao;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.Categorie;
-import models.City;
 import models.Image;
-import models.State;
 import models.Product;
 
 /*

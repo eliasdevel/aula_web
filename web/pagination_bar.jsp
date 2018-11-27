@@ -6,8 +6,12 @@
 <nav aria-label="...">
     <ul class="pagination">
         <c:forEach items="${pageLinks}" var="page">
-            <li class="page-item"><a class="page-link" href="<c:out value="${page.value}"/>"><c:out value="${page.key+1}"/></a></li>
-               
-        </c:forEach>
+                <c:if test="${page.key == currentPage}">
+                    <li class="page-item active"><a class="page-link" href="<c:out value="${page.value}"/>"><c:out value="${page.key+1}"/></a></li>
+                </c:if>
+                <c:if test="${page.key != currentPage}">
+                    <li class="page-item"><a class="page-link" href="<c:out value="${page.value}"/>"><c:out value="${page.key+1}"/></a></li>
+                </c:if>
+            </c:forEach>
     </ul>
 </nav>

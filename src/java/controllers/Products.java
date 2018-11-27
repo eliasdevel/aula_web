@@ -40,6 +40,7 @@ public class Products implements Logic {
         req.setAttribute("pageLinks", new PagesMap().getMap(dao.getPages("products"), "?p=Products"));
         req.setAttribute("products", dao.getProducts(search,p*10));
         
+        req.setAttribute("currentPage", p);
         req.setAttribute("content", "products-list.jsp");
         req.setAttribute("savePage", "ProductForm");
         req.setAttribute("title", "Products");
