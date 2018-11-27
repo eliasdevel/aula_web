@@ -78,7 +78,18 @@ public class Standart {
         ResultSet rs;
         rs = this.con.createStatement().executeQuery("SELECT currval('" + table + "_id_sequence');");
         rs.next();
-        return rs.getInt(1) ;
+        return rs.getInt(1);
     }
 
+    public int getPages(String table) throws SQLException {
+        String query = "select(SELECT count(*) FROM " + table + ")/10; ";
+        PreparedStatement ps = this.con.prepareStatement(query);
+        ResultSet rs = ps.executeQuery();
+        rs.next();
+        return rs.getInt(1) + 1;
+    }
+    
+    public String addOffset(String query){
+        return query += "  order by id desc limit 10 offset ?";
+    }
 }

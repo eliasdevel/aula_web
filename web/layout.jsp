@@ -12,18 +12,18 @@
         <link href="assets/menu.css" rel="stylesheet"/>
         <script src="jquery/jquery.js"></script>
         <script src="bootstrap/dist/js/bootstrap.min.js"></script>
-          <script type="text/javascript" src='mascara.js' >
+        <script type="text/javascript" src='mascara.js' >
         </script>
     </head>
     <body>
         <c:import  url = "menu.jsp"/>
         <div class= "main" style="height:100%">
             <c:import  url = "${content}"/>
+            <c:if test="${pageLinks != null}">
+                <c:import  url = "pagination_bar.jsp"/>
+            </c:if>
         </div>
-      
         <script type="text/javascript" src='shortcuts.js' >
-         
         </script>
-        
     </body>
 </html>

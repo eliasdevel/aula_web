@@ -1,6 +1,7 @@
 /*
  */
 package dao;
+
 import java.sql.PreparedStatement;
 import java.util.List;
 import java.sql.ResultSet;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import models.Categorie;
 import models.Image;
 import models.Product;
+
 /**
  *
  * @author elias
@@ -22,22 +24,24 @@ public class ProductsDao extends Standart {
         this.con = con;
         this.products = products;
     }
-    
+
     /**
      * @return List of products
      * @throws SQLException
      */
-    public List<Product> getProducts(Product productQ) throws SQLException {
+    public List<Product> getProducts(Product search, int offset) throws SQLException {
         String query = "SELECT * FROM products ";
-        if (productQ != null) {
-            query += "where name ilike ?";
+        if (search != null) {
+            query += " where name ilike ?";
         }
-        query += " ORDER BY id";
+        query = this.addOffset(query);
         PreparedStatement ps = this.con.prepareStatement(query + ";");
-
-        if (productQ != null) {
-            ps.setString(1, "%" + productQ.getName() + "%");
+        int indexParm = 1;
+        if (search != null) {
+            ps.setString(indexParm, "%" + search.getName() + "%");
+            indexParm++;
         }
+        ps.setInt(indexParm, offset);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             Product product = new Product();
@@ -53,6 +57,7 @@ public class ProductsDao extends Standart {
         }
         return this.products;
     }
+
     public boolean saveProduct(Product product) throws SQLException {
         PreparedStatement ps = null;
         ResultSet rs = this.getById("products", product.getId() + "");
@@ -65,7 +70,7 @@ public class ProductsDao extends Standart {
             ps.setInt(5, product.getId());
         } else {
             ps = this.con.prepareStatement("INSERT INTO products (description,name,price,category_id) values(?,?,?,?);");
-            System.out.println("product.getDescription()");     
+            System.out.println("product.getDescription()");
             System.out.println(product.getDescription());
             ps.setString(1, product.getDescription());
             ps.setString(2, product.getName());
@@ -74,6 +79,7 @@ public class ProductsDao extends Standart {
         }
         return !ps.execute();
     }
+
     public Product getProduct(int id) throws SQLException {
         this.categoriesDao = new CategorieDao(new ArrayList<Categorie>());
         PreparedStatement ps = this.con.prepareStatement("Select * from  products where id = ?;");

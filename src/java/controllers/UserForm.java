@@ -33,7 +33,7 @@ public class UserForm implements Logic {
         StatesDao statesDao = new StatesDao(new ArrayList<State>());
         
         String action = "admin?p=UserSave";
-        req.setAttribute("users", dao.getUsers(null));
+        req.setAttribute("users", dao.getUsers(null,0));
         req.setAttribute("content", "user-form.jsp");
         req.setAttribute("title", "Usuarios");
         if (req.getParameter("id") != null) {

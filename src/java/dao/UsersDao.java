@@ -29,15 +29,19 @@ public class UsersDao extends Standart {
      * @return List of states
      * @throws SQLException
      */
-    public List<User> getUsers(User search) throws SQLException {
+    public List<User> getUsers(User search, int offset) throws SQLException {
         String query = "SELECT * FROM users ";
         if (search != null) {
             query += " where name ilike ?";
         }
+        query = this.addOffset(query);
         PreparedStatement ps = this.con.prepareStatement(query + ";");
+        int indexParm = 1;
         if (search != null) {
-            ps.setString(1, "%" + search.getName() + "%");
+            ps.setString(indexParm, "%" + search.getName() + "%");
+            indexParm++;
         }
+        ps.setInt(indexParm, offset);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             User user = new User();
@@ -87,4 +91,6 @@ public class UsersDao extends Standart {
         u.setName(rs.getString("name"));
         return u;
     }
+
+ 
 }

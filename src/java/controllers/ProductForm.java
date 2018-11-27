@@ -34,7 +34,7 @@ public class ProductForm implements Logic {
         ImagesDao imagesDao = new ImagesDao(new ArrayList<Image>());
         Product product = new Product();
         String action = "admin?p=ProductSave";
-        req.setAttribute("users", dao.getProducts(null));
+        req.setAttribute("users", dao.getProducts(null,0));
         req.setAttribute("content", "product-form.jsp");
         req.setAttribute("title", "Edição Produto");
         if (req.getParameter("id") != null) {

@@ -1,6 +1,7 @@
 package controllers;
 
 import dao.ProductsDao;
+import helpers.PagesMap;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +33,12 @@ public class Products implements Logic {
             search = null;
         }
         ProductsDao dao = new ProductsDao(new ArrayList<Product>());
-        req.setAttribute("products", dao.getProducts(search));
+         int p = 0;
+        if (req.getParameter("o") != null) {
+            p = Integer.parseInt(req.getParameter("o"));
+        }
+        req.setAttribute("pageLinks", new PagesMap().getMap(dao.getPages("products"), "?p=Products"));
+        req.setAttribute("products", dao.getProducts(search,p*10));
         
         req.setAttribute("content", "products-list.jsp");
         req.setAttribute("savePage", "ProductForm");
