@@ -12,7 +12,7 @@
     </div>
     <div class="form-group">
         <label for="inputSigla">CPF</label>
-        <input name ="cpf" value="<c:out value="${user.getCpf()}"/>" type="text" class="form-control" id="exampleInputPassword1" placeholder="Cpf">
+        <input name ="cpf" oninput="mascara(this, 'cpf')" c value="<c:out value="${user.getCpf()}"/>" type="text" class="cpf form-control" id="exampleInputPassword1" placeholder="Cpf">
     </div>
     <div class="form-group">
         <label for="exampleFormControlSelect1">Tipo</label>
@@ -63,7 +63,7 @@
 
     <div class="form-group">
         <label for="inputSigla">Cep</label>
-        <input name ="cep" value="<c:out value="${user.getAddress().getCep()}"/>" type="text" class="form-control" id="exampleInputPassword1" placeholder="Cep">
+        <input  name ="cep"   oninput="mascara(this, 'cep')" value="<c:out value="${user.getAddress().getCep()}"/>" type="text" class="form-control" id="exampleInputPassword1" placeholder="Cep">
     </div>
 
 

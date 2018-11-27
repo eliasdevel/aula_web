@@ -24,7 +24,7 @@ public class CitySave implements Logic {
         StatesDao stDao = new StatesDao(new ArrayList<State>());
         City city = new City();
 
-        if (req.getParameter("id") != null) {
+        if (!req.getParameter("id").equals("") ) {
             city.setId(Integer.parseInt(req.getParameter("id")));
         }
         if (req.getParameter("state_id") != null) {
