@@ -14,7 +14,7 @@
     </head>
     <body>
         <c:import  url = "header.jsp"/>
-        <div class= "main" style="height:100%">
+        <div style="margin-top: 10px" class= "main" style="height:100%">
             <c:import  url = "${content}"/>
         </div>
     </body>

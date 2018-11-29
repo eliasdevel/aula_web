@@ -114,7 +114,6 @@
     </div>
 </div>
 
-
 <nav class="navbar navbar-main navbar-default" role="navigation" style="opacity: 1;">
     <div class="container">
         <!-- Brand and toggle -->
@@ -126,64 +125,17 @@
                 <span class="icon-bar"></span>
             </button>             
         </div>
-
         <!-- Collect the nav links,  -->
         <div class="collapse navbar-collapse navbar-1" style="margin-top: 0px;">            
             <ul class="nav navbar-nav">
-                <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false">Home</a></li>
-
+                <li><a href="?p=Home" >Home</a></li>
                 <li class="dropdown megaDropMenu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false">Shop <i class="fa fa-angle-down ml-5"></i></a>
-                    <ul class="dropdown-menu row">
-                        <li class="col-sm-3 col-xs-12">
-                            <ul class="list-unstyled">
-                                <li>Products Grid View</li>
-                                <li><a href="#">Products</a></li>
-                                <li><a href="#">Sidebar Left</a></li>
-                                <li><a href="#">Products Left</a></li>
-                            </ul>
-                        </li>
-                        <li class="col-sm-3 col-xs-12">
-                            <ul class="list-unstyled">
-                                <li>Products List View</li>
-                                <li><a href="#"> Sidebar Left</a></li>
-                                <li><a href="#">Products Left</a></li>
-                                <li><a href="#">Products Sidebar</a></li>
-                            </ul>
-                        </li>
-                        <li class="col-sm-3 col-xs-12">
-                            <ul class="list-unstyled">
-                                <li>Checkout</li>
-                                <li><a href="#">Step 1</a></li>
-                                <li><a href="#">Step 2</a></li>
-                                <li><a href="#">Step 3</a></li>
-                            </ul>
-                        </li>
-                        <li class="col-sm-3 col-xs-12">
-                            <ul class="list-unstyled">
-                                <li>Sumit Kumar</li>
-                            </ul>
-                           
-                        </li>
-                    </ul>
-                </li>
-
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false">Page <i class="fa fa-angle-down ml-5"></i></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false">Menu <i class="fa fa-angle-down ml-5"></i></a>
                     <ul class="dropdown-menu dropdown-menu-left">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Register</a></li>
-                        <li><a href="#">Register or Login</a></li>
-                        <li><a href="#">Login</a></li>
-                        <li><a href="#">Password Recovery</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">404 Not Found</a></li>
-                        <li><a href="#">Short Code</a></li>
-                        <li><a href="#">Coming Soon</a></li>
+                        <li><a href="?p=About">Sobre</a></li>
                     </ul>
                 </li>
-                <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false">Minha lista</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div>

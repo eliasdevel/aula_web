@@ -31,8 +31,7 @@ public class Home implements Logic {
             search = null;
         }
         ProductsDao dao = new ProductsDao(new ArrayList<Product>());
-        req.setAttribute("products", dao.getProducts(search));
-
+        req.setAttribute("products", dao.getProducts(search,0));
         req.setAttribute("content", "home.jsp");
         req.setAttribute("title", "iTrago");
         System.out.println("Executando a logica e redirecionando...");
