@@ -7,7 +7,7 @@ $(document).ready(function () {
         var cw = canvas.width;
         var ch = canvas.height;
         var maxW = 300;
-        var maxH = 400;
+        var maxH = 300;
         var iw = img.width;
         var ih = img.height;
         var scale = Math.min((maxW / iw), (maxH / ih));

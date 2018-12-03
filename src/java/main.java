@@ -50,6 +50,7 @@ public class main extends HttpServlet {
         }
 
 //            String nomeDaClasse = "br.com.caelum.mvc.logica." + parametro;
+        parametro = new AdminRoutes().getRoute(parametro);
         String nomeDaClasse = "controllers." + parametro;
 
         try {

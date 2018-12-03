@@ -3,20 +3,20 @@
 <form  action="<c:out value = "${action}"/>" method="POST"  >
     <div class="form-group">
         <label for="inputName">Nome</label>
-        <input name ="name" value="<c:out value="${user.getName()}"/>" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="estadoHelp" placeholder="Nome">
+        <input name ="name" required="true" value="<c:out value="${user.getName()}"/>" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="estadoHelp" placeholder="Nome">
 
     </div>
     <div class="form-group">
         <label for="inputSigla">E-mail</label>
-        <input name ="email" value="<c:out value="${user.getEmail()}"/>" type="email" class="form-control" id="exampleInputPassword1" placeholder="E-mail">
+        <input required="true" name ="email" value="<c:out value="${user.getEmail()}"/>" type="email" class="form-control" id="exampleInputPassword1" placeholder="E-mail">
     </div>
     <div class="form-group">
         <label for="inputSigla">CPF</label>
-        <input name ="cpf" oninput="mascara(this, 'cpf')" c value="<c:out value="${user.getCpf()}"/>" type="text" class="cpf form-control" id="exampleInputPassword1" placeholder="Cpf">
+        <input  required="true" name ="cpf" oninput="mascara(this, 'cpf')" c value="<c:out value="${user.getCpf()}"/>" type="text" class="cpf form-control" id="exampleInputPassword1" placeholder="Cpf">
     </div>
     <div class="form-group">
         <label for="exampleFormControlSelect1">Tipo</label>
-        <select class="form-control" id="exampleFormControlSelect1" name="type"  >
+        <select required="true" class="form-control" id="exampleFormControlSelect1" name="type"  >
             <c:if test="${user != null}">
                 <option value="${user.getType()}" selected>${tipos[user.getType()]}</option>
             </c:if>
@@ -30,7 +30,7 @@
     </div>
     <div class="form-group">
         <label for="exampleFormControlSelect1">Estado</label>
-        <select class="form-control" id="exampleFormControlSelect1" name="state"  >
+        <select required="true" class="form-control" id="exampleFormControlSelect1" name="state"  >
             <c:if test="${user != null}">
                 <option value="${user.getAddress().getCity().getState().getId()}" selected>${user.getAddress().getCity().getState().getName()}</option>
             </c:if>

@@ -28,7 +28,7 @@ public class Site extends HttpServlet {
             parametro = "Home";
             
         }
-        
+        parametro = new SiteRoutes().getRoute(parametro);
         String nomeDaClasse = "siteControllers." + parametro;
         try {
             ConexaoBD conexao = new ConexaoBD();
