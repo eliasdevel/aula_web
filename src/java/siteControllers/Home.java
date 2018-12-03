@@ -21,13 +21,12 @@ public class Home implements Logic {
 
         Map<String, String> searchColumns = new HashMap<>();
         Map<String, String> searchValues = new HashMap<>();
-        searchColumns.put("name", "Nome");
-        searchValues.put("name", req.getParameter("name"));
+        searchValues.put("keyword", req.getParameter("keyword"));
         req.setAttribute("searchColumns", searchColumns);
         req.setAttribute("searchValues", searchValues);
         Product search = new Product();
-        search.setName(searchValues.get("name"));
-        if (req.getParameter("name") == null) {
+        search.setName(req.getParameter("keyword"));
+        if (req.getParameter("keyword") == null) {
             search = null;
         }
         ProductsDao dao = new ProductsDao(new ArrayList<Product>());

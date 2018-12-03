@@ -1,3 +1,4 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <nav class="topBar">
     <div class="container">
         <ul class="list-inline pull-left hidden-sm hidden-xs">
@@ -80,7 +81,7 @@
                 <form>
                     <div class="row grid-space-1">
                         <div class="col-sm-6">
-                            <input type="text" name="keyword" class="form-control input-lg" placeholder="Buscar">
+                            <input type="text" name="keyword" value="<c:out value = "${searchValues.get('keyword')}"/>" class="form-control input-lg" placeholder="Buscar">
                         </div>
                         <!-- end col -->
                         <div class="col-sm-3">
