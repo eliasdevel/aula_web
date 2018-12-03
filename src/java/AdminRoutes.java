@@ -25,6 +25,7 @@ public class AdminRoutes {
         validPages.put("StateForm", true);
         validPages.put("StateSave", true);
         validPages.put("Users", true);
+        validPages.put("UsersCsv", true);
         validPages.put("UserForm", true);
         validPages.put("UserSave", true);
         validPages.put("Cities", true);

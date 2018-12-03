@@ -8,6 +8,7 @@
             <th scope="col">ID</th>
             <th scope="col">Nome</th>
             <th scope="col">Descrição</th>
+            <th scope="col">Preço</th>
         </tr>
     </thead>
     <tbody>   
@@ -27,6 +28,9 @@
                 </td>
                 <td scope="col"> 
                      <c:out value = "${product.getDescription()}"/>
+                </td>
+                <td scope="col"> 
+                     <c:out value = "${product.getPrice()}"/>
                 </td>
 
             </tr>
