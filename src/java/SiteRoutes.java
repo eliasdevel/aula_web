@@ -19,6 +19,7 @@ public class SiteRoutes {
         Map<String, Boolean> validPages = new HashMap<>();
         validPages.put("Home", true);
         validPages.put("Productp", true);
+        validPages.put("CreateAccount", true);
         if (validPages.get(rt)  == null ) {
             return "Page404";
         }

@@ -12,7 +12,7 @@
                 <ul class="dropdown-menu w-150" role="menu">
                     <li><a href="login.html">Login</a>
                     </li>
-                    <li><a href="register.html">Criar Conta</a>
+                    <li><a href="?p=CreateAccount">Criar Conta</a>
                     </li>
                     <li class="divider"></li>
                     <li><a href="wishlist.html">Lista de Desejos</a>
