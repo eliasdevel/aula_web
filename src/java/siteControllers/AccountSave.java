@@ -1,9 +1,15 @@
-package controllers;
+package siteControllers;
 
-import dao.CitysDao;
-import dao.UsersDao;
 import dao.AddressDao;
+import dao.ProductsDao;
+import dao.CategorieDao;
+import dao.CitysDao;
+import dao.StatesDao;
+import dao.UsersDao;
+import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.Address;
@@ -16,12 +22,12 @@ import models.User;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-public class UserSave implements Logic {
-
+public class AccountSave implements Logic  {
     public String executa(HttpServletRequest req,
             HttpServletResponse res)
             throws Exception {
-        System.out.println(req.getParameter("ac"));
+
+      System.out.println(req.getParameter("ac"));
         java.lang.reflect.Method method;
         UsersDao dao = new UsersDao(new ArrayList<User>());
         CitysDao citysDao = new CitysDao(new ArrayList<City>());
@@ -44,7 +50,7 @@ public class UserSave implements Logic {
             user.setCpf(req.getParameter("cpf"));
         }
         if (req.getParameter("type") != null) {
-            user.setType(req.getParameter("type"));
+            user.setType("N");
         }
 
         if (req.getParameter("cep") != null) {
@@ -77,6 +83,7 @@ public class UserSave implements Logic {
         }
 
         req.setAttribute("url", "?p=Home");
-        return "sitePages/reload.jsp";
+        return "reload.jsp";
     }
+
 }

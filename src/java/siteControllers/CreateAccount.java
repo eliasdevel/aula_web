@@ -20,19 +20,19 @@ import models.User;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-public class CreateAccount implements Logic  {
+public class CreateAccount implements Logic {
+
     public String executa(HttpServletRequest req,
             HttpServletResponse res)
             throws Exception {
 
-    
         UsersDao dao = new UsersDao(new ArrayList<User>());
-  
+
         CitysDao citysDao = new CitysDao(new ArrayList<City>());
         StatesDao statesDao = new StatesDao(new ArrayList<State>());
-        
-        String action = "admin?p=AccountSave";
-        req.setAttribute("users", dao.getUsers(null,0));
+
+        String action = "?p=AccountSave";
+        req.setAttribute("users", dao.getUsers(null, 0));
         req.setAttribute("content", "user-form.jsp");
         req.setAttribute("title", "Usuarios");
         if (req.getParameter("id") != null) {
@@ -42,16 +42,10 @@ public class CreateAccount implements Logic  {
             action += "&id=" + req.getParameter("id");
             req.setAttribute("user", user);
         }
-        
-        Map<String, String> tipos = new HashMap<>();
-
-        tipos.put("R", "Administrador");
-        tipos.put("N", "Cliente");
-        req.setAttribute("tipos", tipos);
         req.setAttribute("action", action);
         req.setAttribute("states", statesDao.getStates(null));
         req.setAttribute("citys", citysDao.getCitys(null));
-
+        
         System.out.println("Executando a logica e redirecionando...");
         return "sitePages/layout.jsp";
     }
