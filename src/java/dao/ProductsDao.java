@@ -33,14 +33,24 @@ public class ProductsDao extends Standart {
         String query = "SELECT * FROM products ";
         if (search != null) {
             query += " where name ilike ?";
+            if (search.getCategorie() != null) {
+                query += " and category_id = ?";
+            }
         }
         query = this.addOffset(query);
         PreparedStatement ps = this.con.prepareStatement(query + ";");
+
         int indexParm = 1;
         if (search != null) {
             ps.setString(indexParm, "%" + search.getName() + "%");
             indexParm++;
+            if (search.getCategorie() != null) {
+                ps.setInt(indexParm, search.getCategorie().getId());
+                indexParm++;
+            }
+
         }
+
         ps.setInt(indexParm, offset);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {

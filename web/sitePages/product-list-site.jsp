@@ -1,5 +1,8 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>       
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<c:if test="${noResult != null}">
+    <pre class="center-block " style="text-align: center" >Nenhum registro encontrado para esta pesquisa!</pre>
+</c:if>
 <c:forEach items = "${products}"  var = "product">
     <div class="product col-md-4 col-lg-4 center-block" style=" font-size: 18px; padding: 5px;  height: 450px; " id="product_<c:out value = "${product.getId()}"/>">
         <div style="color:#777; margin-right:5px; height: 100%; border:1px solid #0cd4d2; width: 100%;">
@@ -16,5 +19,4 @@
         </div>
     </div>
 </c:forEach>
-
 <script type="text/javascript" src="sitePages/resize.js"></script>

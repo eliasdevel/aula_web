@@ -86,16 +86,15 @@
                         <!-- end col -->
                         <div class="col-sm-3">
                             <select class="form-control input-lg" name="category">
-                                <option value="all">All Categories</option>
-                                <optgroup label="Mens">
-                                    <option value="shirts">Shirts</option>
-                                    <option value="coats-jackets">Coats & Jackets</option>
-                                    <option value="underwear">Underwear</option>
-                                    <option value="sunglasses">Sunglasses</option>
-                                    <option value="socks">Socks</option>
-                                    <option value="belts">Belts</option>
-                                </optgroup>
-                               
+                                <option value="">Todas</option>
+                                <c:if test="${category != null}">
+                                    <option value="${category.getId()}" selected>${category.getName()}</option>
+                                </c:if>
+                                <c:forEach items = "${categories}"  var = "categori">
+                                    <c:if test="${categori.getId() != category.getId()}">
+                                        <option value="<c:out value = "${categori.getId()}"/>"><c:out value = "${categori.getName()}"/></option>
+                                    </c:if>
+                                </c:forEach>
                             </select>
                         </div>
                         <!-- end col -->

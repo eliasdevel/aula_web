@@ -92,4 +92,5 @@ public class Standart {
     public String addOffset(String query){
         return query += "  order by id desc limit 10 offset ?";
     }
+    
 }
