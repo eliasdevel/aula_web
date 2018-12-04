@@ -20,4 +20,3 @@
         </div>
     </div>
 </c:forEach>
-<script type="text/javascript" src="sitePages/resize.js"></script>

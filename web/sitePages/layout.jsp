@@ -18,6 +18,7 @@
         <div style="margin-top: 10px" class= "main" style="height:100%">
             <c:import  url = "${content}"/>
         </div>
+        <script type="text/javascript" src="sitePages/resize.js"></script>
     </body>
 
 

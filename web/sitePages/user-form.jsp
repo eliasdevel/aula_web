@@ -38,7 +38,6 @@
                 </c:forEach>
             </select>
         </div>
-
         <div class="form-group">
             <label for="exampleFormControlSelect1">Cidade</label>
             <select class="form-control" id="exampleFormControlSelect1" name="city"  >

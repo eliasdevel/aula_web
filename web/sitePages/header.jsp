@@ -23,7 +23,7 @@
                     </c:if>
 
                     <li class="divider"></li>
-                    <li><a href="cart.html">Meu Carrinho</a>
+                    <li><a href="?p=MyCart">Meu Carrinho</a>
                     </li>
                     <li><a href="checkout.html">Checkout</a>
                     </li>

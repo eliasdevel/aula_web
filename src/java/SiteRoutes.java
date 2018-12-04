@@ -22,6 +22,7 @@ public class SiteRoutes {
         validPages.put("CreateAccount", true);
         validPages.put("AccountSave", true);
         validPages.put("AddToCart", true);
+        validPages.put("MyCart", true);
         validPages.put("RemoveFromCart", true);
         validPages.put("ClearCart", true);
         validPages.put("Login", true);

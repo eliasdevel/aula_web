@@ -15,14 +15,13 @@ import models.Categorie;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-public class MyCart extends Home {
+public class MyCart extends HeaderContents {
 
     public String executa(HttpServletRequest req,
             HttpServletResponse res)
             throws Exception {
-        Cart crt = new Cart(req);
-        ProductsDao dao = new ProductsDao(new ArrayList<Product>());
-        
+
+        req.setAttribute("content", "my-cart.jsp");
         return super.executa(req, res);
     }
 
