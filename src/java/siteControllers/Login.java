@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-public class Login implements Logic {
+public class Login extends HeaderContents {
 
     public String executa(HttpServletRequest req,
             HttpServletResponse res)
@@ -44,7 +44,7 @@ public class Login implements Logic {
         req.setAttribute("content", "login.jsp");
         System.out.println("Executando a logica e redirecionando...");
 
-        return "sitePages/layout.jsp";
+        return super.executa(req, res);
     }
 
 }

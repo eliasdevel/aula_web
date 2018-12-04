@@ -97,7 +97,7 @@
                         </div>
                         <!-- end col -->
                         <div class="col-sm-3">
-                            <input type="submit" class="btn btn-default btn-block btn-lg" value="Search">
+                            <input type="submit" class="btn btn-default btn-block btn-lg" value="Buscar">
                         </div>
                         <!-- end col -->
                     </div>
