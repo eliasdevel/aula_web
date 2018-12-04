@@ -38,7 +38,8 @@ public class CityForm implements Logic {
             req.setAttribute("city", city);
         }
         req.setAttribute("action", action);
-
+        dao.closeConnection();
+        stDao.closeConnection();
         System.out.println("Executando a logica e redirecionando...");
         return "layout.jsp";
     }

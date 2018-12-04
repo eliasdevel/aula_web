@@ -47,7 +47,8 @@ public class CitySave implements Logic {
                 req.setAttribute("msg", "Erro ao salvar");
             }
         }
-
+        dao.closeConnection();
+        stDao.closeConnection();
         req.setAttribute("url", "?p=Cities");
         return "reload.jsp";
     }
