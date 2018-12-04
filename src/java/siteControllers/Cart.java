@@ -30,7 +30,12 @@ public class Cart {
     public HttpSession addToCart(HttpServletRequest req, Product prod) {
 
         Map<Integer, Float> productIds = (Map<Integer, Float>) req.getSession().getAttribute(this.cartName);
-        productIds.put(prod.getId(), productIds.get(prod.getId()) + 1);
+        if (productIds.get(prod.getId()) != null) {
+            productIds.put(prod.getId(), productIds.get(prod.getId()) + 1);
+        } else {
+            productIds.put(prod.getId(), (float) 1);
+        }
+
         req.getSession().setAttribute(this.cartName, productIds);
         return req.getSession();
     }
