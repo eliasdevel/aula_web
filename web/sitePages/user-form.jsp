@@ -2,7 +2,7 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>     
 <pre style="text-align: center">Cadastro de usuário, Preencha o formulário abaixo.</pre>
 <div class ="col-md-10 col-lg-10" style="margin: 10px">
-    <form  action="<c:out value = "${action}"/>" method="POST"  >
+    <form  action="<c:out value = "${action}"/>" method="POST" >
         <div class="form-group">
             <label for="inputName">Nome</label>
             <input name ="name" required="true" value="<c:out value="${user.getName()}"/>" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="estadoHelp" placeholder="Nome">
@@ -14,7 +14,11 @@
         </div>
         <div class="form-group">
             <label for="inputSigla">Senha</label>
-            <input required="true" name ="password" value="<c:out value="${user.getPassword()}"/>" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+            <input required="true" id="password" name ="password" value="<c:out value="${user.getPassword()}"/>" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+        </div>
+        <div class="form-group">
+            <label for="inputSigla">Confirmar Senha</label>
+            <input required="true" name ="confirm_password" onblur="confirmPassword(this)"  type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
         </div>
         <div class="form-group">
             <label for="inputSigla">CPF</label>
