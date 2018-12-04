@@ -49,15 +49,18 @@ public class AccountSave implements Logic  {
         if (req.getParameter("cpf") != null) {
             user.setCpf(req.getParameter("cpf"));
         }
-        if (req.getParameter("type") != null) {
-            user.setType("N");
-        }
+      
+           user.setType("N");
+        
 
         if (req.getParameter("cep") != null) {
             address.setCep(req.getParameter("cep"));
         }
         if (req.getParameter("street") != null) {
             address.setStreet(req.getParameter("street"));
+        }
+        if (req.getParameter("password") != null) {
+            user.setPassword(req.getParameter("password"));
         }
 
         if (req.getParameter("city") != null) {

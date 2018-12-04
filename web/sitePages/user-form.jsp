@@ -13,6 +13,10 @@
             <input required="true" name ="email" value="<c:out value="${user.getEmail()}"/>" type="email" class="form-control" id="exampleInputPassword1" placeholder="E-mail">
         </div>
         <div class="form-group">
+            <label for="inputSigla">Senha</label>
+            <input required="true" name ="password" value="<c:out value="${user.getPassword()}"/>" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+        </div>
+        <div class="form-group">
             <label for="inputSigla">CPF</label>
             <input  required="true" name ="cpf" oninput="mascara(this, 'cpf')" c value="<c:out value="${user.getCpf()}"/>" type="text" class="cpf form-control" id="exampleInputPassword1" placeholder="Cpf">
         </div>

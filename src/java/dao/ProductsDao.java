@@ -7,6 +7,7 @@ import java.util.List;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Map;
 import models.Categorie;
 import models.Image;
 import models.Product;
@@ -68,8 +69,8 @@ public class ProductsDao extends Standart {
         return this.products;
     }
 
-    public List<Product> getProductsInList(ArrayList<Integer> productIds) throws SQLException {
-        this.products =  new ArrayList<Product>();
+    public List<Product> getProductsInList(Map<Integer, Float> productIds) throws SQLException {
+        this.products = new ArrayList<Product>();
         if (productIds.size() < 1) {
             return new ArrayList<Product>();
         }
@@ -81,10 +82,10 @@ public class ProductsDao extends Standart {
         query += "?) group by id,name,price,description;";
 
         PreparedStatement ps = this.con.prepareStatement(query + ";");
-        for (int i = 0; i < productIds.size(); i++) {
-            System.out.println(i + 1);
-            System.out.println(productIds.get(i));
-            ps.setInt(i + 1, productIds.get(i));
+        int i = 1;
+        for (Map.Entry<Integer, Float> entry : productIds.entrySet()) {
+            ps.setInt(i, entry.getKey());
+            i++;
         }
         ResultSet rs = ps.executeQuery();
 

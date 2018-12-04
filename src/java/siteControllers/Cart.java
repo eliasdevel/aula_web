@@ -6,6 +6,8 @@
 package siteControllers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import models.Product;
@@ -20,24 +22,28 @@ public class Cart {
 
     public Cart(HttpServletRequest req) {
         if (req.getSession().getAttribute(this.cartName) == null) {
-            ArrayList<Integer> productIds = new ArrayList<Integer>();
+            Map<Integer, Float> productIds = new HashMap<>();
             req.getSession().setAttribute(this.cartName, productIds);
         }
     }
 
     public HttpSession addToCart(HttpServletRequest req, Product prod) {
 
-        ArrayList<Integer> productIds = (ArrayList<Integer>) req.getSession().getAttribute(this.cartName);
-        productIds.add(prod.getId());
+        Map<Integer, Float> productIds = (Map<Integer, Float>) req.getSession().getAttribute(this.cartName);
+        productIds.put(prod.getId(), productIds.get(prod.getId()) + 1);
         req.getSession().setAttribute(this.cartName, productIds);
         return req.getSession();
     }
 
     public HttpSession removeFromCart(HttpServletRequest req, Product prod) {
-        ArrayList<Integer> productIds = (ArrayList<Integer>) req.getSession().getAttribute(this.cartName);
-        for (int i = 0; i < productIds.size(); i++) {
-            if (productIds.get(i) == prod.getId()) {
-                productIds.remove(i);
+        Map<Integer, Float> productIds = (Map<Integer, Float>) req.getSession().getAttribute(this.cartName);
+        for (Map.Entry<Integer, Float> entry : productIds.entrySet()) {
+            if (entry.getKey() == prod.getId()) {
+                if (entry.getValue() > 1) {
+                    productIds.put(entry.getKey(), entry.getValue() - 1);
+                } else {
+                    productIds.remove(entry.getKey());
+                }
             }
         }
 
@@ -45,12 +51,13 @@ public class Cart {
         return req.getSession();
     }
 
-    public ArrayList<Integer> getCart(HttpServletRequest req) {
-        ArrayList<Integer> productIds = (ArrayList<Integer>) req.getSession().getAttribute(this.cartName);
+    public Map<Integer, Float> getCart(HttpServletRequest req) {
+        Map<Integer, Float> productIds = (Map<Integer, Float>) req.getSession().getAttribute(this.cartName);
         return productIds;
     }
+
     public void clearCart(HttpServletRequest req) {
-       req.getSession().setAttribute(this.cartName, null);
+        req.getSession().setAttribute(this.cartName, null);
     }
 
 }
