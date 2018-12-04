@@ -32,13 +32,13 @@
                     <li>
                         <div class="cart-items">
                             <ol class="items">
-                                <c:forEach items = "${cartProducts}"  var = "product">
+                                <c:forEach items = "${cartProducts}"  var = "prod">
                                     <li>
-                                        <a class="prd-cart-img" ><img prd_id="<c:out value = "${product.getId()}"/>" style="display: none"  src="data:image/png;base64, <c:out value = "${product.getImages()[0].getBase64Data()}"/>" ></a> 
-                                        <a class="product-image" href="?p=Productp&id=<c:out value = "${product.getId()}"/>"><canvas id="prd-cart-canvas-<c:out value = "${product.getId()}"/>"></canvas></a> 
+                                        <a class="prd-cart-img" ><img prd_id="<c:out value = "${prod.getId()}"/>" style="display: none"  src="data:image/png;base64, <c:out value = "${prod.getImages()[0].getBase64Data()}"/>" ></a> 
+                                        <a class="product-image" href="?p=Productp&id=<c:out value = "${prod.getId()}"/>"><canvas id="prd-cart-canvas-<c:out value = "${prod.getId()}"/>"></canvas></a> 
                                         <div class="product-details">
-                                            <div class="close-icon"> <a href="?p=RemoveFromCart&id=<c:out value = "${product.getId()}"/>"><i class="fa fa-close"></i></a> </div>
-                                            <p class="product-name"> <a href="#"><c:out value = "${product.getName()}"/></a> </p> <strong><c:out value = "${product.getQuantity()}"/></strong> x <span class="price text-primary"><c:out value = "${product.getPrice()}"/>R$</span> </div>
+                                            <div class="close-icon"> <a href="?p=RemoveFromCart&id=<c:out value = "${prod.getId()}"/>"><i class="fa fa-close"></i></a> </div>
+                                            <p class="product-name"> <a href="#"><c:out value = "${prod.getName()}"/></a> </p> <strong></strong> x <span class="price text-primary"><c:out value = "${prod.getPrice()}"/>R$</span> </div>
                                         <!-- end product-details -->
                                     </li>
                                      <!-- end item -->
