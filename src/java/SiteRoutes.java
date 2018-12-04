@@ -24,6 +24,8 @@ public class SiteRoutes {
         validPages.put("AddToCart", true);
         validPages.put("RemoveFromCart", true);
         validPages.put("ClearCart", true);
+        validPages.put("Login", true);
+        validPages.put("Logout", true);
         if (validPages.get(rt)  == null ) {
             return "Page404";
         }

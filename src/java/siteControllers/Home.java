@@ -2,6 +2,7 @@ package siteControllers;
 
 import dao.ProductsDao;
 import dao.CategorieDao;
+import dao.LoginDao;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -51,8 +52,15 @@ public class Home implements Logic {
         req.setAttribute("content", "home.jsp");
         req.setAttribute("title", "iTrago");
         req.setAttribute("cartProducts", dao.getProductsInList(new Cart(req).getCart(req)));
+        LoginDao lDao = new LoginDao(req.getSession());
+
+        if (lDao.normalClientlogged()) {
+            req.setAttribute("clientData", lDao.getLoggedUser());
+        }
+
+        lDao.closeConnection();
         dao.closeConnection();
-        
+
         System.out.println("Executando a logica e redirecionando...");
         return "sitePages/layout.jsp";
     }

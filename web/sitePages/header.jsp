@@ -10,10 +10,18 @@
             <li class="dropdown pull-left">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false"> <i class="fa fa-user mr-5"></i><span class="hidden-xs">Minha Conta<i class="fa fa-angle-down ml-5"></i></span> </a>
                 <ul class="dropdown-menu w-150" role="menu">
-                    <li><a href="login.html">Login</a>
-                    </li>
-                    <li><a href="?p=CreateAccount">Criar Conta</a>
-                    </li>
+
+                    <c:if test="${clientData != null}">
+                        <li><b><a>Olá <c:out value = "${clientData.getName()}"/></a></b>
+                        </li>
+                    </c:if>
+                    <c:if test="${clientData == null}">
+                        <li><a href="?p=Login">Login</a>
+                        </li>
+                        <li><a href="?p=CreateAccount">Criar Conta</a>
+                        </li>
+                    </c:if>
+
                     <li class="divider"></li>
                     <li><a href="wishlist.html">Lista de Desejos</a>
                     </li>
@@ -41,7 +49,7 @@
                                             <p class="product-name"> <a href="#"><c:out value = "${prod.getName()}"/></a> </p> <strong></strong> x <span class="price text-primary"><c:out value = "${prod.getPrice()}"/>R$</span> </div>
                                         <!-- end product-details -->
                                     </li>
-                                     <!-- end item -->
+                                    <!-- end item -->
                                 </c:forEach>
                             </ol>
                         </div>
