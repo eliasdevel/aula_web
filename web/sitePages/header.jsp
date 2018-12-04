@@ -7,7 +7,7 @@
         <ul class="topBarNav pull-right">
 
 
-            <li class="dropdown">
+            <li class="dropdown pull-left">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false"> <i class="fa fa-user mr-5"></i><span class="hidden-xs">Minha Conta<i class="fa fa-angle-down ml-5"></i></span> </a>
                 <ul class="dropdown-menu w-150" role="menu">
                     <li><a href="login.html">Login</a>
@@ -25,37 +25,24 @@
             </li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false"> <i class="fa fa-shopping-basket mr-5"></i> <span class="hidden-xs">
-                        Carrinho<sup class="text-primary">(3)</sup>
+                        Carrinho<sup class="text-primary">(<c:out value = "${cartProducts.size()}"/>)</sup>
                         <i class="fa fa-angle-down ml-5"></i>
                     </span> </a>
                 <ul class="dropdown-menu cart w-250" role="menu">
                     <li>
                         <div class="cart-items">
                             <ol class="items">
-                                <li>
-                                    <a href="#" class="product-image">   </a>
-                                    <div class="product-details">
-                                        <div class="close-icon"> <a href="#"><i class="fa fa-close"></i></a> </div>
-                                        <p class="product-name"> <a href="#">Sumi9xm@gmail.com</a> </p> <strong>1</strong> x <span class="price text-primary">$59.99</span> </div>
-                                    <!-- end product-details -->
-                                </li>
-                                <!-- end item -->
-                                <li>
-                                    <a href="#" class="product-image"> <img src="https://lh3.googleusercontent.com/-Gy3KAlilHAw/WNf7a2eL5YI/AAAAAAAAD2Y/V3jUt14HiZA3HLpeOKkSaOu57efGuMw9ACL0B/w245-d-h318-n-rw/shoes_01.jpg" class="img-responsive" alt="Sample Product "> </a>
-                                    <div class="product-details">
-                                        <div class="close-icon"> <a href="#"><i class="fa fa-close"></i></a> </div>
-                                        <p class="product-name"> <a href="#">Lorem Ipsum dolor sit</a> </p> <strong>1</strong> x <span class="price text-primary">$39.99</span> </div>
-                                    <!-- end product-details -->
-                                </li>
-                                <!-- end item -->
-                                <li>
-                                    <a href="#" class="product-image"> <img src="https://lh3.googleusercontent.com/-ydDc-0L0WFY/WNf7a6Awe_I/AAAAAAAAD2Y/I8IzJtYRWegkOUxCZ5SCK6vbdiiSxVsCQCL0B/w245-d-h318-n-rw/bags_07.jpg" class="img-responsive" alt="Sample Product "> </a>
-                                    <div class="product-details">
-                                        <div class="close-icon"> <a href="#"><i class="fa fa-close"></i></a> </div>
-                                        <p class="product-name"> <a href="#">Lorem Ipsum dolor sit</a> </p> <strong>1</strong> x <span class="price text-primary">$29.99</span> </div>
-                                    <!-- end product-details -->
-                                </li>
-                                <!-- end item -->
+                                <c:forEach items = "${cartProducts}"  var = "product">
+                                    <li>
+                                        <a class="prd-cart-img" ><img prd_id="<c:out value = "${product.getId()}"/>" style="display: none"  src="data:image/png;base64, <c:out value = "${product.getImages()[0].getBase64Data()}"/>" ></a> 
+                                        <a class="product-image" href="?p=Productp&id=<c:out value = "${product.getId()}"/>"><canvas id="prd-cart-canvas-<c:out value = "${product.getId()}"/>"></canvas></a> 
+                                        <div class="product-details">
+                                            <div class="close-icon"> <a href="?p=RemoveFromCart&id=<c:out value = "${product.getId()}"/>"><i class="fa fa-close"></i></a> </div>
+                                            <p class="product-name"> <a href="#"><c:out value = "${product.getName()}"/></a> </p> <strong><c:out value = "${product.getQuantity()}"/></strong> x <span class="price text-primary"><c:out value = "${product.getPrice()}"/>R$</span> </div>
+                                        <!-- end product-details -->
+                                    </li>
+                                     <!-- end item -->
+                                </c:forEach>
                             </ol>
                         </div>
                     </li>

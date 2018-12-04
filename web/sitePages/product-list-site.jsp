@@ -10,6 +10,7 @@
                 <div class="product product-name"><c:out value = "${product.getName()}"/></div> <br/>
                 <div class="product product-description"><c:out value = "${product.getDescription()}"/></div><br/>
                 <div class="product product-name">Preço:&nbsp;<c:out value = "${product.getPrice()}"/></div>R$<br/>
+                <a  href="?p=AddToCart&id=<c:out value = "${product.getId()}"/>" class="product product-name glyphicon glyphicon-shopping-cart"></a><br/>
             </div>
             <div class="col-md-8 col-lg-8">
                 <a class="product-link" href="?p=Productp&id=<c:out value = "${product.getId()}"/>"><img prd_id="<c:out value = "${product.getId()}"/>" class="product img-responsive" width="100%" style="display: none"  src="data:image/png;base64, <c:out value = "${product.getImages()[0].getBase64Data()}"/>" ></a>

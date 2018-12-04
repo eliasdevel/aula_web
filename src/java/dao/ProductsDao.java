@@ -68,6 +68,39 @@ public class ProductsDao extends Standart {
         return this.products;
     }
 
+    public List<Product> getProductsInList(ArrayList<Integer> productIds) throws SQLException {
+        String query = "SELECT count(id)as quantity, * FROM products ";
+        query += " where id in (";
+        for (int i = 0; i < productIds.size() - 1; i++) {
+            query += "?,";
+        }
+        query += "?) group by id,name,price,description;";
+       
+        
+        PreparedStatement ps = this.con.prepareStatement(query + ";");
+        for (int i = 0; i < productIds.size(); i++) {
+            System.out.println(i + 1);
+            System.out.println(productIds.get(i));
+            ps.setInt(i + 1, productIds.get(i));
+        }
+        ResultSet rs = ps.executeQuery();
+        
+        while (rs.next()) {
+            Product product = new Product();
+            //Setters
+            product.setQuantity(rs.getFloat("quantity"));
+            product.setId(rs.getInt("id"));
+            product.setName(rs.getString("name"));
+            product.setPrice(rs.getFloat("price"));
+            product.setDescription(rs.getString("description"));
+            product.setImages(new ImagesDao(new ArrayList<Image>()).getImages(product));
+            this.products.add(product);
+            //turn null, "minha mania"
+            product = null;
+        }
+        return this.products;
+    }
+
     public boolean saveProduct(Product product) throws SQLException {
         PreparedStatement ps = null;
         ResultSet rs = this.getById("products", product.getId() + "");

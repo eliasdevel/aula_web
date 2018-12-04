@@ -50,6 +50,8 @@ public class Home implements Logic {
 
         req.setAttribute("content", "home.jsp");
         req.setAttribute("title", "iTrago");
+        req.setAttribute("cartProducts", dao.getProductsInList(new Cart(req).getCart(req)));
+
         System.out.println("Executando a logica e redirecionando...");
         return "sitePages/layout.jsp";
     }

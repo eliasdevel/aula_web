@@ -48,4 +48,27 @@ public class LoginDao extends Standart {
         }
         return (this.sess.getAttribute("email") == null ? user.getEmail() == null : this.sess.getAttribute("email").equals(user.getEmail())) && (this.sess.getAttribute("password") == null ? user.getPassword() == null : this.sess.getAttribute("password").equals(user.getPassword()));
     }
+
+    public boolean normalClientlogged() throws SQLException {
+
+        Statement st = this.con.createStatement();
+
+        ResultSet rs = st.executeQuery("Select * from users where type in ('N','R')  "
+                + "and email = '" + this.sess.getAttribute("email") + "' "
+                + "and password = '" + this.sess.getAttribute("password") + "';");
+        User user = new User();
+        while (rs.next()) {
+
+            //Setters
+            user.setId(rs.getInt("id"));
+            user.setName(rs.getString("name"));
+            user.setCpf(rs.getString("cpf"));
+            user.setEmail(rs.getString("email"));
+            user.setPassword(rs.getString("password"));
+            user.setType(rs.getString("type"));
+
+            //turn null, "minha mania"
+        }
+        return (this.sess.getAttribute("email") == null ? user.getEmail() == null : this.sess.getAttribute("email").equals(user.getEmail())) && (this.sess.getAttribute("password") == null ? user.getPassword() == null : this.sess.getAttribute("password").equals(user.getPassword()));
+    }
 }

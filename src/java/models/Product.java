@@ -16,6 +16,7 @@ public class Product extends Standart {
     private String name;
     private String description;
     private Categorie categorie;
+    private float quantity;
     private float price;
     private List<Image> images;
 
@@ -34,7 +35,13 @@ public class Product extends Standart {
     public void setPrice(float price) {
         this.price = price;
     }
+    public void setQuantity(float quantity) {
+        this.quantity = quantity;
+    }
 
+    public float getQuantity() {
+        return quantity;
+    }
     public Categorie getCategorie() {
         return categorie;
     }

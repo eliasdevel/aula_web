@@ -47,10 +47,11 @@ public class UsersCsv implements Logic {
         ArrayList<User> users = (ArrayList<User>) dao.getUsers(search, p * 10);
         String output ="";
         for(User user: users){
-            output += user.getEmail() + ", " + user.getName() + "\n";
+            output += user.getEmail() + "; " + user.getName() + "\r\n";
         }
+        req.setAttribute("content", "csv.jsp");
         req.setAttribute("data", output);
-        return "csv.jsp";
+        return "layout.jsp";
     }
 
 }
