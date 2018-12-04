@@ -35,7 +35,12 @@ public class Cart {
 
     public HttpSession removeFromCart(HttpServletRequest req, Product prod) {
         ArrayList<Integer> productIds = (ArrayList<Integer>) req.getSession().getAttribute(this.cartName);
-        productIds.remove(prod.getId());
+        for (int i = 0; i < productIds.size(); i++) {
+            if (productIds.get(i) == prod.getId()) {
+                productIds.remove(i);
+            }
+        }
+
         req.getSession().setAttribute(this.cartName, productIds);
         return req.getSession();
     }
@@ -43,6 +48,9 @@ public class Cart {
     public ArrayList<Integer> getCart(HttpServletRequest req) {
         ArrayList<Integer> productIds = (ArrayList<Integer>) req.getSession().getAttribute(this.cartName);
         return productIds;
+    }
+    public void clearCart(HttpServletRequest req) {
+       req.getSession().setAttribute(this.cartName, null);
     }
 
 }

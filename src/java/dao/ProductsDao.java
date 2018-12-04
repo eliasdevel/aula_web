@@ -69,6 +69,10 @@ public class ProductsDao extends Standart {
     }
 
     public List<Product> getProductsInList(ArrayList<Integer> productIds) throws SQLException {
+        this.products =  new ArrayList<Product>();
+        if (productIds.size() < 1) {
+            return new ArrayList<Product>();
+        }
         String query = "SELECT count(id)as quantity, * FROM products ";
         query += " where id in (";
         for (int i = 0; i < productIds.size() - 1; i++) {

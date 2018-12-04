@@ -23,6 +23,7 @@ public class SiteRoutes {
         validPages.put("AccountSave", true);
         validPages.put("AddToCart", true);
         validPages.put("RemoveFromCart", true);
+        validPages.put("ClearCart", true);
         if (validPages.get(rt)  == null ) {
             return "Page404";
         }
