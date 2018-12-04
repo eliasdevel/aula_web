@@ -8,7 +8,7 @@
                 <th scope="col"> Opções </th>
                 <th scope="col">Nome</th>
                 <th scope="col">Imagem</th>
-                <th scope="col">Descrição</th>
+                <th scope="col">Quantidade</th>
                 <th scope="col">Preço</th>
                 <th scope="col">Total</th>
             </tr>
@@ -17,23 +17,23 @@
             <c:forEach items = "${cartProducts}"  var = "product">
                 <tr>
                     <td> 
-                        <a style="font-size:  20px" href="?p=ProductForm&id=<c:out value = "${product.getId()}"/>" class="glyphicon-plus"></a>
-                        <a style="font-size:  20px" onclick="return confirm('Você tem certeza que deseja excluir o registro?')" href="?p=ProductSave&ac=delete&id=<c:out value = "${product.getId()}"/>" class="glyphicon-minus"></a>
+                        <a style="font-size:  20px" href="?p=AddToCart&id=<c:out value = "${product.getId()}"/>" class="glyphicon-plus"></a>
+                        <a style="font-size:  20px" href="?p=RemoveFromCart&id=<c:out value = "${product.getId()}"/>" class="glyphicon-minus"></a>
                     </td>
                     <td scope="col"> 
                         <c:out value = "${product.getName()}"/>
                     </td>
-                    <td  class="image-product-grid" id-prd="<c:out value = "${product.getId()}"/>" scope="col"> 
-
+                    <td  class="image-product-grid" prd_id="<c:out value = "${product.getId()}"/>" scope="col"> 
+                        <canvas id ="prd-cart-grid-canvas-<c:out value = "${product.getId()}"/>"></canvas>
                     </td>
                     <td scope="col"> 
-                        <c:out value = "${product.getDescription()}"/>
-                    </td>
-                    <td scope="col"> 
-                        <c:out value = "${product.getPrice()}"/>&nbsp;R$
+                        <c:out value = "${cartNumbers.get(product.getId())}"/>
                     </td>
                     <td scope="col"> 
                         <c:out value = "${product.getPrice()}"/>&nbsp;R$
+                    </td>
+                    <td scope="col"> 
+                        <c:out value = "${product.getPrice() * cartNumbers.get(product.getId())}"/>&nbsp;R$
                     </td>
                 </tr>
             </c:forEach>

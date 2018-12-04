@@ -40,5 +40,17 @@ $(document).ready(function () {
         ctx.drawImage(img, 0, 0, iwScaled, ihScaled);
         $(this).parent().remove();
     });
+    
+    $(".image-product-grid").each(function (index) {
+        var canvas = document.getElementById("prd-cart-grid-canvas-" + $(this).attr('prd_id'));
+        var canvas1 = document.getElementById("prd-cart-canvas-" + $(this).attr('prd_id'));
+        var context = canvas.getContext('2d');
+        //set dimensions
+        canvas.width = canvas1.width;
+        canvas.height = canvas1.height;
+        //apply the old canvas to the new one
+        context.drawImage(canvas1, 0, 0);
+    });
+    
 });
 

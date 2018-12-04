@@ -5,7 +5,6 @@
  */
 package siteControllers;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -42,14 +41,10 @@ public class Cart {
 
     public HttpSession removeFromCart(HttpServletRequest req, Product prod) {
         Map<Integer, Float> productIds = (Map<Integer, Float>) req.getSession().getAttribute(this.cartName);
-        for (Map.Entry<Integer, Float> entry : productIds.entrySet()) {
-            if (entry.getKey() == prod.getId()) {
-                if (entry.getValue() > 1) {
-                    productIds.put(entry.getKey(), entry.getValue() - 1);
-                } else {
-                    productIds.remove(entry.getKey());
-                }
-            }
+        if (productIds.get(prod.getId()) > 1) {
+            productIds.put(prod.getId(), productIds.get(prod.getId()) - 1);
+        } else {
+            productIds.remove(prod.getId());
         }
 
         req.getSession().setAttribute(this.cartName, productIds);
