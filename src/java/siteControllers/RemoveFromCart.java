@@ -15,7 +15,8 @@ import models.Categorie;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-public class RemoveFromCart extends Home {
+public class RemoveFromCart extends HeaderContents {
+
     public String executa(HttpServletRequest req,
             HttpServletResponse res)
             throws Exception {
@@ -26,7 +27,10 @@ public class RemoveFromCart extends Home {
                 crt.removeFromCart(req, dao.getProduct(Integer.parseInt(req.getParameter("id"))));
             }
         }
-
+        if (req.getParameter("redirect") != null) {
+            req.setAttribute("url", "?p=" + req.getParameter("redirect"));
+            req.setAttribute("content", "reload.jsp");
+        }
         return super.executa(req, res);
     }
 

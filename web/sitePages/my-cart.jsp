@@ -17,8 +17,8 @@
             <c:forEach items = "${cartProducts}"  var = "product">
                 <tr>
                     <td> 
-                        <a style="font-size:  20px" href="?p=AddToCart&id=<c:out value = "${product.getId()}"/>" class="glyphicon-plus"></a>
-                        <a style="font-size:  20px" href="?p=RemoveFromCart&id=<c:out value = "${product.getId()}"/>" class="glyphicon-minus"></a>
+                        <a style="font-size:  20px" href="?p=AddToCart&id=<c:out value = "${product.getId()}&redirect=MyCart"/>" class="glyphicon-plus"></a>
+                        <a style="font-size:  20px" href="?p=RemoveFromCart&id=<c:out value = "${product.getId()}&redirect=MyCart"/>" class="glyphicon-minus"></a>
                     </td>
                     <td scope="col"> 
                         <c:out value = "${product.getName()}"/>
@@ -39,5 +39,5 @@
             </c:forEach>
         </tbody>
     </table>
-    <button type="button" class="btn btn-primary">Finalizar</button>
+    <button type="button" class="btn btn-default ">Finalizar</button>
 </div>
