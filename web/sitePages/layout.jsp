@@ -11,6 +11,7 @@
         <link href="sitePages/assets/main.css" rel="stylesheet">
         <script src="jquery/jquery.js"></script>
         <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="mascara.js"></script>
     </head>
     <body>
         <c:import  url = "header.jsp"/>

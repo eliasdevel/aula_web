@@ -49,7 +49,7 @@ public class AccountSave implements Logic  {
         if (req.getParameter("cpf") != null) {
             user.setCpf(req.getParameter("cpf"));
         }
-      
+        
            user.setType("N");
         
 
