@@ -75,7 +75,9 @@ public class UserSave implements Logic {
                 req.setAttribute("msg", "Erro ao salvar");
             }
         }
-
+        dao.closeConnection();
+        addressDao.closeConnection();
+        citysDao.closeConnection();
         req.setAttribute("url", "?p=Home");
         return "sitePages/reload.jsp";
     }

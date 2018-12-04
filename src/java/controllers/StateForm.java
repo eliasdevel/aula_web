@@ -36,6 +36,7 @@ public class StateForm implements Logic {
         }
 
         req.setAttribute("action", action);
+        dao.closeConnection();
         System.out.println("Executando a logica e redirecionando...");
         return "layout.jsp";
     }

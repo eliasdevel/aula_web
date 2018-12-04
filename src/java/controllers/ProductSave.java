@@ -83,6 +83,9 @@ public class ProductSave implements Logic {
                 req.setAttribute("msg", "Erro ao salvar");
             }
         }
+        imgsDao.closeConnection();
+        catDao.closeConnection();
+        dao.closeConnection();
         req.setAttribute("url", "?p=Products");
         return "reload.jsp";
     }

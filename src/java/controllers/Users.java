@@ -1,6 +1,5 @@
 package controllers;
 
-import dao.StatesDao;
 import dao.UsersDao;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,6 +47,7 @@ public class Users implements Logic {
         req.setAttribute("savePage", "UserForm");
         req.setAttribute("title", "Users");
         System.out.println("Executando a logica e redirecionando...");
+        dao.closeConnection();
         return "layout.jsp";
     }
 

@@ -49,6 +49,7 @@ public class UsersCsv implements Logic {
         for(User user: users){
             output += user.getEmail() + "; " + user.getName() + "\r\n";
         }
+        dao.closeConnection();
         req.setAttribute("content", "csv.jsp");
         req.setAttribute("data", output);
         return "layout.jsp";

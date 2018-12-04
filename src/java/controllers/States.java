@@ -24,6 +24,7 @@ public class States implements Logic {
         req.setAttribute("savePage", "StateForm");
         req.setAttribute("title", "Estados");
         System.out.println("Executando a logica e redirecionando...");
+        dao.closeConnection();
         return "layout.jsp";
     }
   

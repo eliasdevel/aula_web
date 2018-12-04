@@ -45,6 +45,8 @@ public class Products implements Logic {
         req.setAttribute("savePage", "ProductForm");
         req.setAttribute("title", "Products");
         System.out.println("Executando a logica e redirecionando...");
+        dao.closeConnection();
+        
         return "layout.jsp";
     }
 

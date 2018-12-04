@@ -46,7 +46,9 @@ public class ProductForm implements Logic {
         req.setAttribute("categories", categorieDao.getCategories(null));
         req.setAttribute("action", action);
         req.setAttribute("images", imagesDao.getImages(product));
-
+        dao.closeConnection();
+        imagesDao.closeConnection();
+        categorieDao.closeConnection();
         System.out.println("Executando a logica e redirecionando...");
         return "layout.jsp";
     }

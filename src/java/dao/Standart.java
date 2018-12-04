@@ -93,4 +93,7 @@ public class Standart {
         return query += "  order by id desc limit 10 offset ?";
     }
     
+    public void closeConnection() throws SQLException{
+        this.con.close();
+    }
 }

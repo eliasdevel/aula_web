@@ -75,8 +75,7 @@ public class ProductsDao extends Standart {
             query += "?,";
         }
         query += "?) group by id,name,price,description;";
-       
-        
+
         PreparedStatement ps = this.con.prepareStatement(query + ";");
         for (int i = 0; i < productIds.size(); i++) {
             System.out.println(i + 1);
@@ -84,7 +83,7 @@ public class ProductsDao extends Standart {
             ps.setInt(i + 1, productIds.get(i));
         }
         ResultSet rs = ps.executeQuery();
-        
+
         while (rs.next()) {
             Product product = new Product();
             //Setters
@@ -93,7 +92,10 @@ public class ProductsDao extends Standart {
             product.setName(rs.getString("name"));
             product.setPrice(rs.getFloat("price"));
             product.setDescription(rs.getString("description"));
-            product.setImages(new ImagesDao(new ArrayList<Image>()).getImages(product));
+
+            ImagesDao imgDao = new ImagesDao(new ArrayList<Image>());
+            product.setImages(imgDao.getImages(product));
+            imgDao.closeConnection();
             this.products.add(product);
             //turn null, "minha mania"
             product = null;

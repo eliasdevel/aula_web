@@ -43,6 +43,7 @@ public class StateSave implements Logic {
         }
         
         req.setAttribute("url", "?p=States");
+        dao.closeConnection();
         return "reload.jsp";
     }
 }
