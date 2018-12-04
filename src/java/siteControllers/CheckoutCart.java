@@ -1,15 +1,11 @@
 package siteControllers;
 
 import dao.ProductsDao;
-import dao.CategorieDao;
 import dao.OrdersDao;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.Product;
-import models.Categorie;
 import models.Order;
 
 /*
