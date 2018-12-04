@@ -84,7 +84,7 @@
                         <!-- end col -->
                         <div class="col-sm-3">
                             <select class="form-control input-lg" name="category">
-                                <option value="">Todas</option>
+                                <option value="">Todas Categorias</option>
                                 <c:if test="${category != null}">
                                     <option value="${category.getId()}" selected>${category.getName()}</option>
                                 </c:if>
