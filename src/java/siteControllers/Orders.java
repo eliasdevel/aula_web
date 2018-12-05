@@ -22,7 +22,7 @@ public class Orders extends HeaderContents {
         OrdersDao orDao = new OrdersDao(new ArrayList<Order>());
         LoginDao lgDao = new LoginDao(req.getSession());
         
-        req.setAttribute("title", "Login");
+        req.setAttribute("title", "Orders");
         req.setAttribute("content", "orders.jsp");
         System.out.println("Executando a logica e redirecionando...");
         if(lgDao.getLoggedUser() !=null){
