@@ -7,8 +7,6 @@ import java.util.List;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Map;
-import models.Image;
 import models.Order;
 import models.Product;
 import models.User;
@@ -57,6 +55,7 @@ public class OrdersDao extends Standart {
 
         String query = "SELECT * FROM orders ";
         query += " where  users_id = ?";
+        query += " order by id desc";
 
         PreparedStatement ps = this.con.prepareStatement(query + ";");
         ps.setInt(1, usr.getId());
@@ -85,6 +84,8 @@ public class OrdersDao extends Standart {
 
         String query = "SELECT * FROM orders ";
        
+        
+        query+=" order by id desc";
 
         PreparedStatement ps = this.con.prepareStatement(query + ";");
     
