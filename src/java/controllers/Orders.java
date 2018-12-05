@@ -31,35 +31,34 @@ public class Orders implements Logic {
         req.setAttribute("searchColumns", searchColumns);
         req.setAttribute("searchValues", searchValues);
 
-        User search = new User();
-        search.setName(searchValues.get("name"));
-        if (req.getParameter("name") == null) {
-            search = null;
-        }
+        Order search = new Order();
+//        search.setName(searchValues.get("name"));
+//        if (req.getParameter("name") == null) {
+//            search = null;
+//        }
 
         OrdersDao dao = new OrdersDao(new ArrayList<Order>());
-     
+
         //Search
         int p = 0;
         if (req.getParameter("o") != null) {
             p = Integer.parseInt(req.getParameter("o"));
         }
-
+        ArrayList<Order> ords = (ArrayList<Order>) dao.getOrders(search);
         req.setAttribute("pageLinks", new PagesMap().getMap(dao.getPages("orders"), "?p=Orders"));
 
         req.setAttribute("currentPage", p);
 
-        req.setAttribute("orders", dao.getOrders(new Order()));
+        req.setAttribute("orders", ords);
         if (req.getParameter("csv") != null) {
-            req.setAttribute("data",new CSV().getOrdersCsv((ArrayList<Order>) dao.getOrders(new Order())));
+            req.setAttribute("data", new CSV().getOrdersCsv((ArrayList<Order>) ords));
             req.setAttribute("fileName", "orders.csv");
-            req.setAttribute("redirect", "?p=Orders");
             req.setAttribute("content", "csv.jsp");
-        }else{
+        } else {
             req.setAttribute("content", "orders-list.jsp");
         }
 //        req.setAttribute("orders", ordDao.getOrderByUser(search, p * 10));
-        
+
         req.setAttribute("csvLink", "Orders&csv=t");
         req.setAttribute("savePage", "UserForm");
         req.setAttribute("title", "Pedidos");

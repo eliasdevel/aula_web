@@ -10,6 +10,5 @@
         link.setAttribute("download", "<c:out value = "${fileName}"/>");
         document.body.appendChild(link); // Required for FF
         link.click();
-        
     });
 </script>

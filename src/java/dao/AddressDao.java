@@ -98,6 +98,7 @@ public class AddressDao extends Standart {
         a.setStreet(rs.getString("street"));
         this.citysDao = new CitysDao(new ArrayList<City>());
         a.setCity(this.citysDao.getCity(rs.getInt("city_id")));
+        this.citysDao.closeConnection();
         return a;
     }
 

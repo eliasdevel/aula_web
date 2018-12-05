@@ -100,7 +100,7 @@ public class ProductsDao extends Standart {
 
             ImagesDao imgDao = new ImagesDao(new ArrayList<Image>());
             product.setImages(imgDao.getImages(product));
-            imgDao.closeConnection();
+            imgDao.con.close();
             this.products.add(product);
             //turn null, "minha mania"
             product = null;
@@ -142,7 +142,10 @@ public class ProductsDao extends Standart {
         c.setDescription(rs.getString("description"));
         c.setPrice(rs.getFloat("price"));
         c.setCategorie(this.categoriesDao.getCategorie(rs.getString("category_id")));
-        c.setImages(new ImagesDao(new ArrayList<Image>()).getImages(c));
+        this.categoriesDao.closeConnection();
+        ImagesDao imgDao = new ImagesDao(new ArrayList<Image>());
+        c.setImages(imgDao.getImages(c));
+        imgDao.closeConnection();
         return c;
     }
 }

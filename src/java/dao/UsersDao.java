@@ -91,6 +91,7 @@ public class UsersDao extends Standart {
         u.setEmail(rs.getString("email"));
         this.addressDao = new AddressDao(new ArrayList<Address>());
         u.setAddress(this.addressDao.getAddress(rs.getInt("address_id")));
+        this.addressDao.closeConnection();
         u.setName(rs.getString("name"));
         return u;
     }

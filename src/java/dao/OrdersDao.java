@@ -71,7 +71,7 @@ public class OrdersDao extends Standart {
             order.setQuantity(rs.getFloat("quantity"));
             order.setClosed(rs.getString("closed").charAt(0));
             order.setData(rs.getTimestamp("data"));
-
+            pdao.closeConnection();
             this.orders.add(order);
             //turn null, "minha mania"
             order = null;
@@ -104,6 +104,7 @@ public class OrdersDao extends Standart {
             order.setClosed(rs.getString("closed").charAt(0));
             order.setData(rs.getTimestamp("data"));
             userDao.closeConnection();
+            pdao.closeConnection();
             this.orders.add(order);
             //turn null, "minha mania"
             order = null;

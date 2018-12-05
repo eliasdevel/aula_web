@@ -80,6 +80,7 @@ public class CitysDao extends Standart {
         c.setId(rs.getInt("id"));
         c.setName(rs.getString("name"));
         c.setState(this.statesDao.getState(rs.getString("state_id")));
+        this.statesDao.closeConnection();
         return c;
     }
 
