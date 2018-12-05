@@ -2,12 +2,11 @@ package siteControllers;
 
 import controllers.*;
 import dao.LoginDao;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import dao.OrdersDao;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import models.Order;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,10 +18,20 @@ public class Orders extends HeaderContents {
     public String executa(HttpServletRequest req,
             HttpServletResponse res)
             throws Exception {
+
+        OrdersDao orDao = new OrdersDao(new ArrayList<Order>());
+        LoginDao lgDao = new LoginDao(req.getSession());
+        
         req.setAttribute("title", "Login");
         req.setAttribute("content", "orders.jsp");
         System.out.println("Executando a logica e redirecionando...");
-
+        if(lgDao.getLoggedUser() !=null){
+            req.setAttribute("orders", orDao.getOrderByUser(lgDao.getLoggedUser()));
+        }
+        
+            
+        orDao.closeConnection();
+        
         return super.executa(req, res);
     }
 

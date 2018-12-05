@@ -43,11 +43,20 @@ public class HeaderContents implements Logic {
         if (req.getParameter("keyword") == null) {
             search = null;
         }
+        int pg = 0;
+        if (req.getParameter("pg") != null) {
+            if (!req.getParameter("pg").equals("")) {
+                pg = Integer.parseInt(req.getParameter("pg"));
+            }
+        }
         ProductsDao dao = new ProductsDao(new ArrayList<Product>());
         ArrayList<Product> pd = new ArrayList<Product>();
-        pd = (ArrayList<Product>) dao.getProducts(search, 0);
+        pd = (ArrayList<Product>) dao.getProducts(search, pg * 10);
         if (pd.size() == 0) {
             req.setAttribute("noResult", "Nenhum resultado encontrado para pesquisa! ");
+        }
+        if (pd.size() == 10) {
+            req.setAttribute("nextPg", pg + 1);
         }
         req.setAttribute("products", pd);
         req.setAttribute("categories", catDao.getCategories(null));

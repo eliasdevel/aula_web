@@ -5,6 +5,8 @@
  */
 package models;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -17,6 +19,7 @@ public class Order extends Standart {
     private float quantity;
     private User user;
     private char closed;
+    private Date data;
 
     public Product getProd() {
         return prod;
@@ -48,6 +51,20 @@ public class Order extends Standart {
 
     public void setClosed(char closed) {
         this.closed = closed;
+    }
+
+    public Date getData() {
+
+        return data;
+    }
+
+    public String getFormatedDate() {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:MM");
+        return format.format(data);
+    }
+
+    public void setData(Date data) {
+        this.data = data;
     }
 
 }

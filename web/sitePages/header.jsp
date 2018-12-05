@@ -8,11 +8,13 @@
 
 
             <li class="dropdown pull-left">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false"> <i class="fa fa-user mr-5"></i><span class="hidden-xs">Minha Conta<i class="fa fa-angle-down ml-5"></i></span> </a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false"> <i class="fa fa-user mr-5"></i><span class="hidden-xs "><span class="glyphicon glyphicon-user"></span>Conta<i class="fa fa-angle-down ml-5"></i></span> </a>
                 <ul class="dropdown-menu w-150" role="menu">
 
                     <c:if test="${clientData.getId() >0}">
                         <li><b><a>Olá <c:out value = "${clientData.getName()}"/></a></b>
+                        </li>
+                        <li><a href="?p=Orders">Meus Pedidos</a>
                         </li>
                     </c:if>
                     <c:if test="${clientData.getId() < 1}">
@@ -27,15 +29,17 @@
                     </li>
                     <li><a href="checkout.html">Checkout</a>
                     </li>
-                    <c:if test="${clientData != null}">
+                    <c:if test="${clientData.getId() > 0 }">
                         <li><b><a href="?p=Logout">Sair</a></b>
                         </li>
                     </c:if>
                 </ul>
+
             </li>
+            <c:if test="${cartProducts.size() > 0}">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false"> <i class="fa fa-shopping-basket mr-5"></i> <span class="hidden-xs">
-                        Carrinho<sup class="text-primary">(<c:out value = "${cartProducts.size()}"/>)</sup>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false"> <i class="fa fa-shopping-basket mr-5"></i> <span class="hidden-xs ">
+                        <span class="glyphicon glyphicon-shopping-cart"></span> Carrinho<sup class="text-primary">(<c:out value = "${cartProducts.size()}"/>)</sup>
                         <i class="fa fa-angle-down ml-5"></i>
                     </span> </a>
                 <ul class="dropdown-menu cart w-250" role="menu">
@@ -65,8 +69,11 @@
                     </li>
                 </ul>
             </li>
+            </c:if>
         </ul>
+
     </div>
+
 </nav><!--=========-TOP_BAR============-->
 
 <!--=========MIDDEL-TOP_BAR============-->
@@ -134,7 +141,15 @@
                         <li><a href="?p=About">Sobre</a></li>
                     </ul>
                 </li>
+
             </ul>
+            <c:if test="${nextPg > 0}">
+                <ul class="nav navbar-nav pull-right">
+                    <li class="pull-right">
+                        <a href="?p=Home&pg=<c:out value = "${nextPg}"/>"><button class="btn btn-default">Póxima página</button></a>
+                    </li>
+                </ul>
+            </c:if>
         </div><!-- /.navbar-collapse -->
     </div>
 </nav>
