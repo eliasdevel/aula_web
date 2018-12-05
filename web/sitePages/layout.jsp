@@ -13,7 +13,7 @@
         <script src="bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="mascara.js"></script>
     </head>
-    <body>
+    <body >
         <c:import  url = "header.jsp"/>
         <div style="margin-top: 10px" class= "main" style="height:100%">
             <c:import  url = "${content}"/>

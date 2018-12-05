@@ -3,20 +3,63 @@
 <c:if test="${noResult != null}">
     <pre class="center-block " style="text-align: center" >Nenhum registro encontrado para esta pesquisa!</pre>
 </c:if>
-<c:forEach items = "${products}"  var = "product">
-    <div class="product col-md-4 col-lg-4 center-block" style=" font-size: 18px; padding: 5px;  height: 450px; " id="product_<c:out value = "${product.getId()}"/>">
-        <div style="color:#777; margin-right:5px; height: 100%; border:1px solid #0cd4d2; width: 100%;">
-            <div class="col-md-4 col-lg-4 product-comentary" style="text-align: center; ">
-                <div class="product product-name"><c:out value = "${product.getName()}"/></div> <br/>
-                <div class="product product-description"><c:out value = "${product.getDescription()}"/></div><br/>
-                <div class="product product-name">Preço:&nbsp;<c:out value = "${product.getPrice()}"/></div>R$<br/>
-                <a  href="?p=AddToCart&id=<c:out value = "${product.getId()}"/>&redirect=Home" class="product product-name glyphicon glyphicon-shopping-cart"></a><br/>
-            </div>
-            <div class="col-md-8 col-lg-8">
-                <a class="product-link" href="?p=Productp&id=<c:out value = "${product.getId()}"/>"><img prd_id="<c:out value = "${product.getId()}"/>" class="product img-responsive" width="100%" style="display: none"  src="data:image/png;base64, <c:out value = "${product.getImages()[0].getBase64Data()}"/>" ></a>
-                <a class="product-link "  href="?p=Productp&id=<c:out value = "${product.getId()}"/>"><canvas class="img-responsive" style="margin-top: 10px" id="canvas_<c:out value = "${product.getId()}"/>"> </canvas>    </a>
 
-            </div>
-        </div>
-    </div>
-</c:forEach>
+<div id ="product-list-div" style="margin: 20px">
+    <c:import  url = "product-interaction.jsp"/>
+</div>
+<script type="text/javascript">
+    function resizeProducts() {
+        $("img").ready(function () {
+
+
+            $(".product-link img").each(function (index) {
+
+                var canvas = document.getElementById("canvas_" + $(this).attr('prd_id'));
+                var img = new Image;
+                img.src = $(this).attr('src');
+                var ctx = canvas.getContext("2d");
+                var cw = canvas.width;
+                var ch = canvas.height;
+                var maxW = 300;
+                var maxH = 300;
+                var iw = img.width;
+                var ih = img.height;
+                var scale = Math.min((maxW / iw), (maxH / ih));
+                var iwScaled = iw * scale;
+                var ihScaled = ih * scale;
+                canvas.width = iwScaled;
+                canvas.height = ihScaled;
+                ctx.drawImage(img, 0, 0, iwScaled, ihScaled);
+                $(this).parent().remove();
+
+            });
+        });
+    }
+    $(window).scroll(function () {
+        var oft =1;
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+            $.ajax({
+                method: "GET",
+                cache: false,
+                url: "?p=ClearProductList",
+                dataType: 'html',
+                data: {keyword: $("input[name^=keyword]").val(), category: $("input[name^=category]").val(),offset:oft}
+            }).done(function (msg) {
+                $("#product-list-div").append(msg);
+                $(".product-link img").each(function (index) {
+                    $.getScript("sitePages/resize.js");
+
+
+                });
+                oft++;
+            });
+        }
+    })
+
+
+
+
+
+
+
+</script>

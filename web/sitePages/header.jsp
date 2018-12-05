@@ -59,7 +59,7 @@
                     </li>
                     <li>
                         <div class="cart-footer"> 
-                            <a href="#" class="pull-left"><i class="fa fa-cart-plus mr-5"></i>Ver Carrinho</a> 
+                            <a href="?p=MyCart" class="pull-left"><i class="fa fa-cart-plus mr-5"></i>Ver Carrinho</a> 
                             <a href="#" class="pull-right"><i class="fa fa-shopping-basket mr-5"></i>Checkout</a> 
                         </div>
                     </li>
