@@ -35,6 +35,7 @@ public class AdminRoutes {
         validPages.put("ProductForm", true);
         validPages.put("Products", true);
         validPages.put("ProductSave", true);
+        validPages.put("Orders", true);
         validPages.put("CategorieForm", true);
         validPages.put("Categories", true);
         validPages.put("CategorieSave", true);

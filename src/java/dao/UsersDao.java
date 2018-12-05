@@ -85,6 +85,7 @@ public class UsersDao extends Standart {
         User u = new User();
         ResultSet rs = this.getById("users", id + "");
         rs.next();
+        u.setId(rs.getInt("id"));
         u.setCpf(rs.getString("cpf"));
         u.setType(rs.getString("type"));
         u.setEmail(rs.getString("email"));

@@ -60,7 +60,7 @@ public class OrdersDao extends Standart {
 
         PreparedStatement ps = this.con.prepareStatement(query + ";");
         ps.setInt(1, usr.getId());
-        
+
         ResultSet rs = ps.executeQuery();
 
         while (rs.next()) {
@@ -70,14 +70,46 @@ public class OrdersDao extends Standart {
             ProductsDao pdao = new ProductsDao(new ArrayList<Product>());
             order.setProd(pdao.getProduct(rs.getInt("products_id")));
             order.setQuantity(rs.getFloat("quantity"));
-            order.setClosed( rs.getString("closed").charAt(0));
-            order.setData(rs.getDate("data"));
-           
+            order.setClosed(rs.getString("closed").charAt(0));
+            order.setData(rs.getTimestamp("data"));
+
             this.orders.add(order);
             //turn null, "minha mania"
             order = null;
         }
         return this.orders;
     }
+    
+     public List<Order> getOrders(Order search) throws SQLException {
+        this.orders = new ArrayList<Order>();
+
+        String query = "SELECT * FROM orders ";
+       
+
+        PreparedStatement ps = this.con.prepareStatement(query + ";");
+    
+
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+             UsersDao userDao = new UsersDao(new ArrayList<User>());
+            Order order = new Order();
+            //Setters
+            order.setId(rs.getInt("id"));
+            order.setUser(userDao.getUser(rs.getInt("users_id")));
+            ProductsDao pdao = new ProductsDao(new ArrayList<Product>());
+            order.setProd(pdao.getProduct(rs.getInt("products_id")));
+            order.setQuantity(rs.getFloat("quantity"));
+            order.setClosed(rs.getString("closed").charAt(0));
+            order.setData(rs.getTimestamp("data"));
+            userDao.closeConnection();
+            this.orders.add(order);
+            //turn null, "minha mania"
+            order = null;
+        }
+        return this.orders;
+    }
+
+    
 
 }

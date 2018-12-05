@@ -24,9 +24,8 @@ public class CheckoutCart extends HeaderContents {
         ProductsDao dao = new ProductsDao(new ArrayList<Product>());
         OrdersDao orDao = new OrdersDao(new ArrayList<Order>());
         LoginDao lgDao = new LoginDao(req.getSession());
-        if (!lgDao.normalClientlogged()) {
+        if (lgDao.getLoggedUser().getId() < 1) {
             req.setAttribute("url", "?p=Login");
-            return "sitePages/reload.jsp";
         } else {
             Order ord = new Order();
             ord.setUser(lgDao.getLoggedUser());
@@ -41,10 +40,11 @@ public class CheckoutCart extends HeaderContents {
                 }
             }
             crt.clearCart(req);
+            req.setAttribute("url", "?p=Orders");
         }
         dao.closeConnection();
         orDao.closeConnection();
-        req.setAttribute("url", "?p=Orders");
+        
         return "sitePages/reload.jsp";
     }
 
