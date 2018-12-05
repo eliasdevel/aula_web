@@ -60,4 +60,13 @@ public class Cart {
         req.getSession().setAttribute(this.cartName, null);
     }
 
+    public HttpSession removeAllIdFromCart(HttpServletRequest req, Product prod) {
+        Map<Integer, Float> productIds = (Map<Integer, Float>) req.getSession().getAttribute(this.cartName);
+        if (productIds.get(prod.getId()) > 1) {
+            productIds.remove(prod.getId());
+        }
+        req.getSession().setAttribute(this.cartName, productIds);
+        return req.getSession();
+    }
+
 }

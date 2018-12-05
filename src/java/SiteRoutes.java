@@ -24,7 +24,10 @@ public class SiteRoutes {
         validPages.put("AddToCart", true);
         validPages.put("MyCart", true);
         validPages.put("RemoveFromCart", true);
+        validPages.put("ClearProductList", true);
+        validPages.put("CheckoutCart", true);
         validPages.put("ClearCart", true);
+        validPages.put("Orders", true);
         validPages.put("Login", true);
         validPages.put("Logout", true);
         if (validPages.get(rt)  == null ) {
