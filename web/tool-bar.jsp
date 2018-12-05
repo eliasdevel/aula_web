@@ -3,6 +3,10 @@
 <div class="trago-toolbar" style="margin-left: 0px" class="row" >
     <div class="col-md-12">
         <a class="glyphicon glyphicon-plus" title="Novo Cadastro" href="?p=<c:out value = "${savePage}"/>"> </a>
+        <c:if test="${csvLink != null}">
+            <a class="glyphicon glyphicon-th" title="Gerar Csv" href="?p=<c:out value = "${csvLink}"/>"> </a>
+        </c:if>
+        
         <div class="input-group" id="adv-search" style="float:right;margin-left:100px;">
          
             <div class="input-group-btn ">

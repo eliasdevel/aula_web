@@ -13,9 +13,7 @@ import models.Order;
  * @author elias
  */
 public class CSV {
-
     String csv;
-
     public String getOrdersCsv(ArrayList<Order> orders) {
         this.csv ="ID;Data;Cliente;Produto;Preço;Quantidade;Total\r\n";
         for (Order ord : orders) {
@@ -23,7 +21,6 @@ public class CSV {
                     + "" + ord.getProd().getName() + ";" + ord.getProd().getPrice() + ";" + ord.getQuantity() + ";"
                     + "" + (ord.getQuantity() * ord.getProd().getPrice())+"\r\n";
         }
-
         return csv;
     }
 

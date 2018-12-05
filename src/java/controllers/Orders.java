@@ -53,12 +53,14 @@ public class Orders implements Logic {
         if (req.getParameter("csv") != null) {
             req.setAttribute("data",new CSV().getOrdersCsv((ArrayList<Order>) dao.getOrders(new Order())));
             req.setAttribute("fileName", "orders.csv");
+            req.setAttribute("redirect", "?p=Orders");
             req.setAttribute("content", "csv.jsp");
         }else{
             req.setAttribute("content", "orders-list.jsp");
         }
 //        req.setAttribute("orders", ordDao.getOrderByUser(search, p * 10));
         
+        req.setAttribute("csvLink", "Orders&csv=t");
         req.setAttribute("savePage", "UserForm");
         req.setAttribute("title", "Pedidos");
         System.out.println("Executando a logica e redirecionando...");
